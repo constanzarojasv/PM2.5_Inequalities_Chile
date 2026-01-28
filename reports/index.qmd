@@ -1,16 +1,17 @@
 ---
-title: "Persistent inequalities in PM2.5 Exposure: Santiago (2022-2024)
+title: "Persistent inequalities in PM2.5 Exposure: Santiago (2022-2024)"
 subtitle: "Statistical analysis: tables and figures"
-date: 28-01-2026
+date: "2026-01-28"
 format: html
+editor: visual
 ---
 
-## 1. Introduction
+## 2. Descriptive Statistics
 
-explicar que es esto
+The following tables summarize the availability of valid data and average PM2.5 concentrations per municipality.
 
-## 2.1 Annual statistics
-Overview of the entire study perior (2022-2024)
+### 2.1 Annual Statistics
+Overview of the entire study period (2022-2024).
 
 ```{r}
 #| label: tbl-annual
@@ -21,26 +22,16 @@ library(readr)
 library(dplyr)
 library(gt)
 
-#Read the RDS file 
-table_annual <- read_rds("../output/tables/tabla_1_anual.rds")
+table_annual <- read_rds("../output/tables/table_1_anual.rds")
 
-#Create table
 table_annual %>%
-    gt() %>%
-    tab_header(
-        title = "Table 1: blabla",
-        subtitle = "blabla"
-    ) %>%
-    # Format numbers to 1 decimal place
-     fmt_number(colums = c(Mean, SD, Min, Max, P98), decimals = 1) %>%
-    #Rename columns for display
-    cols_label(
+  gt() %>%
+  tab_header(
+    title = "Table 1: Annual descriptive statistics of daily PM2.5 concentrations by municipality in the Metropolitan Region (2022-2024)"
+  ) %>%
+  cols_label(
     comuna = "Municipality",
     anio = "Year",
-    p_value = "p-value",
-    N_days = "Valid Days"
- )
-
+    N_days = "Valid days"
+  )
 ```
-
-REVISAR TODOOO
