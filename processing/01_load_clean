@@ -32,7 +32,7 @@ df_analisis <- df_crudo %>%
     # Define Season (Winter: May-August)
     es_invierno = as.factor(ifelse(mes %in% 5:8, "Winter", "Rest of year"))
   ) %>%
-  # Join with Sociodemographics (Now in English!)
+  # Join with Sociodemographics 
   left_join(datos_comunas, by = "comuna")
 
 # 4. SAVE
