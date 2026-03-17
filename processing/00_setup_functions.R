@@ -42,6 +42,8 @@ library(knitr)
 library(broom.mixed)
 library(performance)
 library(tibble)
+library(elevatr)
+library(ggspatial)
 
 
 #2. COLOR SETUP

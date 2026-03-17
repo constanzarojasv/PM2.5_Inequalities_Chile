@@ -63,5 +63,9 @@ tabla_invierno <- df_analisis %>%
   calcular_tabla_resumen("TABLE 2: WINTER STATISTICS")
 
 #4. Save tables as .md
-writeLines(kable(tabla_anual, format = "markdown"), "output/tables/table_1_anual.md")
-writeLines(kable(tabla_invierno, format = "markdown"), "output/tables/table_2_winter.md")
+#write_csv(tabla_anual, "output/tables/table_1_anual.csv")
+#write_csv(tabla_invierno, "output/tables/table_2_winter.csv")
+#writeLines(kable(tabla_anual, format = "markdown"), "output/tables/table_1_anual.md")
+#writeLines(kable(tabla_invierno, format = "markdown"), "output/tables/table_2_winter.md")
+
+

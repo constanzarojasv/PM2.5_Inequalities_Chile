@@ -1,0 +1,218 @@
+objectid,id,nombre_est,rue,respaldo_i,origen_alt,url_ficha,altura,cod_com,uuid,longitud,latitud,altura
+1,36,Interior Central,0,Res. 806/96,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=36,-45,01101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.18843127799994,-20.80332559599998,-45
+2,30,Salinas Punta de Lobos,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=30,47,01101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.17929462899997,-20.741511725999942,47
+3,29,Vertedero de Cenizas,0,Res. 806/96,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=29,328,01101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.16628690699997,-20.769806135999943,328
+4,28,Máximo Impacto Ambiental,0,Res. 806/96,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=28,116,01101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.17751990899995,-20.78888251899997,116
+5,31,Correa N°8,0,Res. 19/99,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=31,4370,01405,5798c0ec-a22d-4923-a286-4c617b92994a,-68.79198505399995,-20.998484708999968,4370
+6,44,Campamento Pica,0,Res. Sanitaria N°1909/2006,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=44,4257,01405,5798c0ec-a22d-4923-a286-4c617b92994a,-68.79455242099993,-20.487436772999956,4257
+7,32,Chancador Primario,0,Res. 19/99,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=32,4295,01405,5798c0ec-a22d-4923-a286-4c617b92994a,-68.80847809099998,-20.989983473999928,4295
+8,25,Blanco,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=25,2279,01401,5798c0ec-a22d-4923-a286-4c617b92994a,-69.30847074599995,-20.10657672399998,2279
+9,27,Parca,0,Resolución Nº22/97 y Resolución Nº1167/03 (EMRP),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=27,2849,01401,5798c0ec-a22d-4923-a286-4c617b92994a,-69.19881505999996,-20.008578946999933,2849
+10,26,Mamiña,0,Resolución Nº22/97 y Resolución Nº1121/03 (EMRP),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=26,2844,01401,5798c0ec-a22d-4923-a286-4c617b92994a,-69.21624132399995,-20.069989331999977,2844
+11,24,Campamento,0,Resolución Nº22/97 y Resolución Nº1166/03 (EMRP),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=24,2427,01401,5798c0ec-a22d-4923-a286-4c617b92994a,-69.27500658699995,-20.072600533999946,2427
+12,5,Inacesa,0,Resolución nº 1995 de 27 de Junio de 2006 (EMRP MP10 y EMRPG SO2). Desde Diciembre de 2005 esta estación tiene la ubicación mencionada anteriormente.,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=5,455,02101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.31516489799998,-23.782194223999966,455
+13,33,Playa Blanca,0,Sin Representatividad Poblacional,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=33,99,02101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.40726206899996,-23.674214165999956,99
+14,20,Coviefi,20210103,Resolución nº 4473 de 19 de Octubre de 2004 (EMRP-MP10 y EMRPG SO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=20,167,02101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.40397326999994,-23.686679439999978,167
+15,34,Oncológico,0,"Resolución nº 3901 de 24 de Noviembre de 2005 (EMRP MP10)
+Resolución nº 695 de 01 de Marzo de 2007 (EMPB Pb)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=34,35,02101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.39309493599995,-23.65584703099995,35
+16,35,Rendic,0,"Resolución nº 3900 de 24 de Noviembre de 2005 (EMRP MP10)
+Resolución nº 696 de 01 de Marzo de 2007 (EMPB Pb)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=35,65,02101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.38072839699998,-23.612491852999938,65
+17,21,La Negra,20210101,Resolución nº 4473 de 19 de Octubre de 2004 (EMRP-MP10 y EMRPG SO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=21,482,02101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.31538370599998,-23.79125940499995,482
+18,11,Sur,20210102,No declarada EMRP tampoco EMRPG,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=11,534,02101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.30891646299995,-23.83338939899994,534
+19,8,Villa Caspana,20220102,No declarada EMRP,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=8,2259,02201,5798c0ec-a22d-4923-a286-4c617b92994a,-68.92796985099994,-22.47498997699995,2259
+20,77,Aukahuasi,20220103,"Resolución nº 4071, de 22 de Septiembre de 1998
+Resolución nº 4471, de 18 de Octubre de 2004 (SO2), le da representabilidad poblacional desde 02 de Enero de 2003
+Resolución nº 1572, de 02 de Mayo de 2008, quita el carácter de Estación monitora con repr",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=77,2670,02201,5798c0ec-a22d-4923-a286-4c617b92994a,-68.93530410399995,-22.317474093999977,2670
+21,17,Chiu Chiu,0,Resolución nº 1571 de 02 de Mayo de 2008 (EMRP MP10 y EMRPG SO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=17,2542,02201,5798c0ec-a22d-4923-a286-4c617b92994a,-68.65084569699997,-22.34241558399998,2542
+22,16,Servicio Médico Legal,0,Resolución nº 1569 de 02 de Mayo de 2008 (EMRP MP10 y EMRPG SO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=16,2243,02201,5798c0ec-a22d-4923-a286-4c617b92994a,-68.94767906499999,-22.460543101999974,2243
+23,9,San José,20220104,"Resolución nº 4071, de 22 de Septiembre de 1998 (MP10)
+Resolución nº 4471, de 18 de Octubre de 2004 (SO2), le da representabilidad poblacional desde 02 de Enero de 2003",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=9,2826,02201,5798c0ec-a22d-4923-a286-4c617b92994a,-68.92739361199995,-22.31180629299996,2826
+24,4,Hospital el Cobre,20220101,"Resolución nº 1477, de 03 de Abril de 2002 (declarada EMRP MP10)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=4,2298,02201,5798c0ec-a22d-4923-a286-4c617b92994a,-68.90837929299994,-22.450624249999976,2298
+25,70,Catemu,50570202,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=70,376,05702,5798c0ec-a22d-4923-a286-4c617b92994a,-70.95918375499997,-32.77929635399994,376
+26,15,Hospital,20230201,Resolución nº 4075 de 22 de Septiembre de 1998 (EMRP MP10 Hospital Hivol) Resolución nº 5593 de 29 de Noviembre de 2002 (EMRP MP10 Atenuación Beta),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=15,1274,02302,5798c0ec-a22d-4923-a286-4c617b92994a,-69.66466682499998,-22.341690419999964,1274
+27,7,Iglesia,20230202,Resolución nº 4075 de 22 de Septiembre de 1998 (EMRP MP10),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=7,1253,02302,5798c0ec-a22d-4923-a286-4c617b92994a,-69.66073928899993,-22.344895400999974,1253
+28,14,Compañía de Bomberos,0,"Resolución nº 4562 de 25 de Octubre de 2004 (EMRP-MP10 y EMRPG NO2, NO y CO)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=14,12,02102,5798c0ec-a22d-4923-a286-4c617b92994a,-70.45031838499995,-23.100167433999957,12
+29,3,Jardín Infantil Integra,20210203,Resolución nº 4567 de 25 de Octubre de 2004 (EMRPG NO2 y NO),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=3,-16,02102,5798c0ec-a22d-4923-a286-4c617b92994a,-70.44279755299993,-23.098935850999965,-16
+30,22,Paposo,20210402,"Resolución nº 4566 de 25 de Octubre de 2004 (EMRPG NO2, NO y O3)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=22,315,02104,5798c0ec-a22d-4923-a286-4c617b92994a,-70.46315250599997,-25.007262683999954,315
+31,6,Punto de Máximo Impacto,20210401,"Resolución nº 4566 de 25 de Octubre de 2004 (EMRPG NO2, NO y O3)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=6,477,02104,5798c0ec-a22d-4923-a286-4c617b92994a,-70.46116069699997,-24.98294858299994,477
+32,12,Escuela E-12,20230103,"Resolución n° 3664 de fecha 06 de Septiembre de 2004 (EMRP MP10)
+Resolución nº 1032 de fecha 10 de Abril de 2006 (EMRPG SO2)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=12,102,02301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.19490956199996,-22.088905341999975,102
+33,13,Escuela Gabriela Mistral,20230102,"Resolución n° 3664 de fecha 06 de Septiembre de 2004 (EMRP MP10)
+Resolución nº 2451 de 18 de Agosto de 2006 (EMRPG SO2)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=13,245,02301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.19701399699994,-22.093641325999954,245
+34,84,Gobernación,20230101,"Resolución n° 3664, de fecha 06 de Septiembre de 2004 (EMRP MP10)
+Resolución nº 1032 de fecha 10 de Abril de 2006 (EMRPG SO2)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=84,245,02301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.20118751699994,-22.093159053999955,245
+35,43,Sur,20230106,Resolución nº 4474 de 19 de Octubre de 2004  (EMRP MP10 y EMRPG SO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=43,-2,02301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.21383821199998,-22.10694929999994,-2
+36,37,Centro,20230105,"Resolución 4474 de 19 de Octubre de 2004 (EMRP MP10)
+",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=37,245,02301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.19703254399997,-22.093541826999967,245
+37,23,Norte,0,Resolución nº 4066 de 11 de Septiembre de 2000 (EMRP MP10 y EMRPG SO2 y NO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=23,102,02301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.18876515199997,-22.085508542999946,102
+38,2,Ferrocarriles,20210201,Resolución nº 2830 de 28 de Septiembre de 2006 (EMRP MP10 y EMRPG SO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=2,-2,02301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.21383821199998,-22.10694929999994,-2
+39,187,Los Volcanes,0,"Nº 1729 Clasifica la Estación de Monitoreo con representatividad poblacional,  para gas de dióxido de azufre (EMRPG) a las 6 estaciones de monitoreo de la Fundición",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=187,431,03101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.30625381499993,-27.373328302999937,431
+40,189,Paipote,0,"Nº 545 Clasifica la Estación con representatividad poblacional,  a las estaciones de Tierra Amarilla, San Fernando, Copiapó
+Nº 1729 Clasifica la Estación de Monitoreo con representatividad poblacional,  para gas de dióxido de azufre (EMRPG) a las 6 esta",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=189,477,03101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.27141630199998,-27.413611659999958,477
+41,191,San Fernando,0,"Nº 545 Clasifica la Estación con representatividad poblacional,  a las estaciones de Tierra Amarilla, San Fernando, Copiapó
+Nº 1729 Clasifica la Estación de Monitoreo con representatividad poblacional,  para gas de dióxido de azufre (EMRPG) a las 6 esta",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=191,399,03101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.30125508299994,-27.396330017999958,399
+42,186,Copiapó,0,"Nº 545 Clasifica la Estación con representatividad poblacional,  a las estaciones de Tierra Amarilla, San Fernando, Copiapó
+Nº 1729 Clasifica la Estación de Monitoreo con representatividad poblacional,  para gas de dióxido de azufre (EMRPG) a las 6 esta",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=186,459,03101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.32931647699996,-27.363099915999953,459
+43,204,Doña Ines,0,"D.S Nº 59/1998, modificado D.S Nº 45/2001, establece norma de calidad primaria para  material particulado respirable PM 10. <br />
+D.S Nº 179/1991, Plan de Descontaminación Potrerillos. <br />",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=204,2711,03202,5798c0ec-a22d-4923-a286-4c617b92994a,-69.48108122899998,-26.432901235999964,2711
+44,75,CAP,0,"D.S Nº 59/1998, modificado D.S Nº 45/2001, establece norma de calidad primaria para  material particulado respirable PM 10. <br />
+Resolución Exenta Nº  1889/2006,  SEREMI  Salud   Atacama.  Establece EMRPG para MP 10. <br />
+Resolución Exenta Nº 6614/",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=75,2607,03202,5798c0ec-a22d-4923-a286-4c617b92994a,-69.50704525499998,-26.423457350999968,2607
+45,201,Intelec,0,"D.S Nº 59/1998, modificado D.S 45/2001, establece norma de calidad primaria para material particulado respirable PM 10. <br />
+Resolución Exenta Nº 55/2003, califica ambientalmente proyecto ?Damiana?. <br />
+Resolución Exenta Nº  107/1998,  califica am",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=201,2378,03202,5798c0ec-a22d-4923-a286-4c617b92994a,-69.59611689999997,-26.27119871399998,2378
+46,76,Cine Inca,0,"D.S Nº 59/1998, modificado por D.S Nº 45/2001, Norma de calidad primaria para material particulado respirable MP10. <br />
+Resolución Exenta Nº  107/1998,  califica ambientalmente proyecto ?Campamento Antiguo? <br />
+Resolución Exenta Nº 1888/2006, SER",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=76,2298,03202,5798c0ec-a22d-4923-a286-4c617b92994a,-69.62491518999997,-26.244096979999938,2298
+47,200,SM8 Freirina,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=200,173,03303,5798c0ec-a22d-4923-a286-4c617b92994a,-71.07950297699995,-28.50415191899998,173
+48,199,SM7 Los Loros,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=199,149,03303,5798c0ec-a22d-4923-a286-4c617b92994a,-71.09414638599998,-28.494605883999952,149
+49,198,SM6 Parcela Buena Esperanza,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=198,114,03303,5798c0ec-a22d-4923-a286-4c617b92994a,-71.12452331099996,-28.500261112999965,114
+50,203,EME M,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=203,51,03304,5798c0ec-a22d-4923-a286-4c617b92994a,-71.21677522599998,-28.466909138999938,51
+51,195,SM3 Compañía de Bomberos Huasco Bajo,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=195,69,03304,5798c0ec-a22d-4923-a286-4c617b92994a,-71.17606552299998,-28.46845106199993,69
+52,194,SM2 Quinta La Rosa,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=194,69,03304,5798c0ec-a22d-4923-a286-4c617b92994a,-71.17933733599995,-28.46169449599995,69
+53,197,SM5 Parcela 5 El Pino,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=197,102,03304,5798c0ec-a22d-4923-a286-4c617b92994a,-71.14412448099995,-28.481058649999966,102
+54,196,SM4 Carretera km 40,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=196,115,03304,5798c0ec-a22d-4923-a286-4c617b92994a,-71.16526090099995,-28.47789934599996,115
+55,193,SM1 Vertedero,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=193,33,03304,5798c0ec-a22d-4923-a286-4c617b92994a,-71.25221303899997,-28.497049467999943,33
+56,188,Pabellón,0,"Nº 1729 Clasifica la Estación de Monitoreo con representatividad poblacional,  para gas de dióxido de azufre (EMRPG) a las 6 estaciones de monitoreo de la Fundición",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=188,844,03103,5798c0ec-a22d-4923-a286-4c617b92994a,-70.23531057899999,-27.657611840999948,844
+57,192,Tierra Amarilla,0,"Nº 545 Clasifica la Estación con representatividad poblacional,  a las estaciones de Tierra Amarilla, San Fernando, Copiapó<br />
+Nº 1729 Clasifica la Estación de Monitoreo con representatividad poblacional,  para gas de dióxido de azufre (EMRPG) a las",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=192,608,03103,5798c0ec-a22d-4923-a286-4c617b92994a,-70.26587345699994,-27.475666812999975,608
+58,100,Hospital,0,RCA y Res. N° 3040 de 28.12.2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=100,1037,04103,5798c0ec-a22d-4923-a286-4c617b92994a,-71.08421547299997,-30.224371710999947,1037
+59,99,Chepiquilla,0,"RCA, posteriormente se dio la representatividad poblacional por Resolución Nº166 del 26 de Enero del 2005, SEREMI de Salud",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=99,1107,04103,5798c0ec-a22d-4923-a286-4c617b92994a,-71.08470908499999,-30.255135567999957,1107
+60,82,El Sauce,0,RCA y Res. N° 3040 de 28.12.2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=82,1102,04103,5798c0ec-a22d-4923-a286-4c617b92994a,-71.09244358299998,-30.23469624699993,1102
+61,78,Urmeneta - Plaza Centenario,0,"RCA, posteriormente se dio la representatividad poblacional por Resolución Nº166 del 26 de Enero del 2005, SEREMI de Salud",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=78,1102,04103,5798c0ec-a22d-4923-a286-4c617b92994a,-71.08584733199996,-30.23966394499996,1102
+62,94,El Mauro,0,RCA N° 038/04 y Representatividad Poblacional a través de Res. N° 2908 de 13 de diciembre de 2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=94,937,04203,5798c0ec-a22d-4923-a286-4c617b92994a,-71.01044884399994,-31.973737307999954,937
+63,89,Caimanes,0,RCA N° 038/04 y Representatividad Poblacional a través de Res. N° 2908 de 13 de diciembre de 2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=89,552,04203,5798c0ec-a22d-4923-a286-4c617b92994a,-71.13651349299994,-31.92774512799997,552
+64,98,Tranquilla,0,RCA N° 038/04 y Representatividad Poblacional a través de Res. N° 2908 de 13 de diciembre de 2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=98,1157,04204,5798c0ec-a22d-4923-a286-4c617b92994a,-70.67857812299997,-31.89395227199998,1157
+65,97,Quelen Alto,0,RCA N° 038/04 y Representatividad Poblacional a través de Res. N° 2908 de 13 de diciembre de 2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=97,874,04204,5798c0ec-a22d-4923-a286-4c617b92994a,-70.83584009899994,-31.894709030999934,874
+66,95,Hotel Mina,0,RCA N° 038/04 y Representatividad Poblacional a través de Res. N° 2908 de 13 de diciembre de 2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=95,2706,04204,5798c0ec-a22d-4923-a286-4c617b92994a,-70.53321524999996,-31.78056015599998,2706
+67,93,Cuncumen,0,RCA N° 038/04 y Representatividad Poblacional a través de Res. N° 2908 de 13 de diciembre de 2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=93,1237,04204,5798c0ec-a22d-4923-a286-4c617b92994a,-70.62140144299997,-31.89344086099993,1237
+68,69,Lo Campo,50570201,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=69,482,05704,5798c0ec-a22d-4923-a286-4c617b92994a,-70.89805313999994,-32.797842180999965,482
+69,90,Camisas,0,RCA N° 038/04 y Representatividad Poblacional a través de Res. N° 2908 de 13 de diciembre de 2006 de la SEREMI de Salud,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=90,771,04204,5798c0ec-a22d-4923-a286-4c617b92994a,-70.95520315999994,-31.88075185499997,771
+70,58,Junta de Vecinos,0,"SSVQ Nro306 28 enero 2004
+SSVQ Nro0207 SAG 408 23 julio 2002
+SSVQ Nro50 SAG Nro0037 31 enero 2000",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=58,107,05103,5798c0ec-a22d-4923-a286-4c617b92994a,-71.52578614099997,-32.935295853999946,107
+71,55,Concón sur,50510302,"SSVQ Nro306 28 enero 2004
+SSVQ Nro0207 SAG 408 23 julio 2002
+SSVQ Nro50 SAG Nro0037 31 enero 2000",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=55,107,05103,5798c0ec-a22d-4923-a286-4c617b92994a,-71.52803792099996,-32.93288787599994,107
+72,81,Terminal de Combustible Campiche,50510501,Resolución Exenta 01/1999,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=81,35,05105,5798c0ec-a22d-4923-a286-4c617b92994a,-71.45085659699998,-32.73620138399997,35
+73,53,CI-Meteorologica,50510508,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=53,35,05105,5798c0ec-a22d-4923-a286-4c617b92994a,-71.48410321099993,-32.765853378999964,35
+74,49,Los Maitenes,50510504,SSVQ Nro212 SAG Nro0105 12 de abril 2002,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=49,41,05105,5798c0ec-a22d-4923-a286-4c617b92994a,-71.45264646499999,-32.761793488999956,41
+75,48,La Greda,50510503,SSVQ Nro2005 SAG 115 29 abril 1992-SSVQ Nro3474 SAG 206 23 julio 1992 - SSVQ Nro2161 18 julio 1995 - SSVQ Nro53 SAG Nro0040 31 enero 2000,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=48,33,05105,5798c0ec-a22d-4923-a286-4c617b92994a,-71.47420495299997,-32.745237602999964,33
+76,47,Terminal Concentrados,50510502,Resolución Exenta 01/1999,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=47,28,05105,5798c0ec-a22d-4923-a286-4c617b92994a,-71.48010772299995,-32.75109026599995,28
+77,45,ARMAT,50510601,SSVQ Nro212 SAG Nro0105 12 de abril 2002,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=45,172,05801,5798c0ec-a22d-4923-a286-4c617b92994a,-71.42929245899995,-33.03910298499994,172
+78,57,Las Gaviotas,50510304,"SSVQ Nro306 28 enero 2004
+SSVQ Nro0207 SAG 408 23 julio 2002
+SSVQ Nro50 SAG Nro0037 31 enero 2000",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=57,50,05107,5798c0ec-a22d-4923-a286-4c617b92994a,-71.48148140799998,-32.915616255999964,50
+79,52,Valle Alegre,50510507,"SSVQ Nro2005 SAG 115 29 abril 1992
+SSVQ Nro3474 SAG 206 23 julio 1992
+SSVQ Nro 2161 18 julio 1995
+SSVQ Nro53 SAG Nø0040 31 enero 2000
+SSVQ Nro1924 29 agosto 2000
+SSVQ Nro305 28",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=52,52,05107,5798c0ec-a22d-4923-a286-4c617b92994a,-71.48073969199999,-32.79693010799997,52
+80,51,Sur,50510506,"SSVQ Nro2005 SAG 115 29 abril 199
+SSVQ Nro3474 SAG 206 23 julio 1992
+SSVQ Nro2161 18 julio 1995",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=51,52,05107,5798c0ec-a22d-4923-a286-4c617b92994a,-71.48073969199999,-32.79693010799997,52
+81,157,Viña del Mar,0,"Res. Nº4300 ( EMRP) y Res. Nº4301 (EMRPG ), agosto de 2005",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=157,51,05109,5798c0ec-a22d-4923-a286-4c617b92994a,-71.55030980499998,-33.02027619399996,51
+82,18,Los Andes,0,"Res Nº 549 EMRP, 17 de marzo de 2008",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=18,870,05301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.59215259099994,-32.84424380699994,870
+83,73,Hospital CabildoHos,50540201,SSVQ Nro2963 5 diciembre 2000,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=73,350,05402,5798c0ec-a22d-4923-a286-4c617b92994a,-71.06556096599996,-32.425920417999976,350
+84,60,San Pedro,50550102,"SSVQ Nro307 28 enero 2004
+Resolución Exenta Nº 5415 del 5 de Diciembre de 2006 (EMRP",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=60,137,05501,5798c0ec-a22d-4923-a286-4c617b92994a,-71.27375165799998,-32.937090755999975,137
+85,63,La Palma,0,SSVQ Nro307 28 enero 2004,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=63,112,05501,5798c0ec-a22d-4923-a286-4c617b92994a,-71.20866871099997,-32.891907438999965,112
+86,62,Manzanar,0,SSVQ Nro0234 15 de febrero de 2008,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=62,105,05501,5798c0ec-a22d-4923-a286-4c617b92994a,-71.37222462699998,-32.91329311099997,105
+87,59,Cuerpo de Bomberos Quillota,50550101,SSVQ Nro307 28 enero 2004,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=59,102,05501,5798c0ec-a22d-4923-a286-4c617b92994a,-71.24681734899997,-32.88519468199996,102
+88,65,La Calera,50550201,"SSVQ Nro52 31 Enero 2000 SAG Nro0039
+SSVQ Nro309 28 Enero 2004",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=65,205,05502,5798c0ec-a22d-4923-a286-4c617b92994a,-71.18954585099993,-32.782252804999985,205
+89,67,La Cruz,50550203,"SSVQ Nro52 31 Enero 2000 SAG Nro0039
+SSVQ Nro309 28 Enero 2004",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=67,216,05504,5798c0ec-a22d-4923-a286-4c617b92994a,-71.22741158699995,-32.81265134299997,216
+90,61,La Crux,0,SSVQ Nro0234 15 de febrero de 2008,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=61,136,05504,5798c0ec-a22d-4923-a286-4c617b92994a,-71.22510679099997,-32.84654516499995,136
+91,56,Colmo,50510303,"SSVQ Nro306 28 enero 2004
+SSVQ Nro0207 SAG 408 23 julio 2002
+SSVQ Nro50 SAG Nro0037 31 enero 2000",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=56,56,05802,5798c0ec-a22d-4923-a286-4c617b92994a,-71.44064639699997,-32.92973897299993,56
+92,72,Santa Margarita,50570204,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=72,479,05702,5798c0ec-a22d-4923-a286-4c617b92994a,-70.93823365699996,-32.776637231999985,479
+93,71,Romeral,50570203,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=71,456,05702,5798c0ec-a22d-4923-a286-4c617b92994a,-71.00642697899997,-32.82411809799993,456
+94,163,Cerrillos,0,"Resolución Nº 121.821 del 28 de diciembre de 2005. Seremi de Salud Región Metropolitana. Clasifica como estaciones de monitoreo de calidad de aire con Representación Poblacional para gases de Monóxido de Carbono (CO), Ozono (O3) y Dióxido de Azufre (SO2)",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=163,512,13102,5798c0ec-a22d-4923-a286-4c617b92994a,-70.71932865899998,-33.492884232999984,512
+95,165,Cerro Navia,0,Sin información,Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=165,500,13103,5798c0ec-a22d-4923-a286-4c617b92994a,-70.73205509199994,-33.43307040299993,500
+96,164,El Bosque,0,"Resolución Nº 121.821 del 28 de diciembre de 2005. Seremi de Salud Región Metropolitana. Clasifica como estaciones de monitoreo de calidad de aire con Representación Poblacional para gases de Monóxido de Carbono (CO), Ozono (O3) y Dióxido de Azufre (SO2)",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=164,579,13105,5798c0ec-a22d-4923-a286-4c617b92994a,-70.66616285899994,-33.547016018999955,579
+97,159,La Florida,0,"Resolución Nº 121.821 del 28 de diciembre de 2005. Seremi de Salud Región Metropolitana. Clasifica como estaciones de monitoreo de calidad de aire con Representación Poblacional para gases de Monóxido de Carbono (CO), Ozono (O3) y Dióxido de Azufre (SO2)",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=159,612,13110,5798c0ec-a22d-4923-a286-4c617b92994a,-70.58816010199996,-33.51666688299997,612
+98,160,Las Condes,0,"Resolución Nº 121.821 del 28 de diciembre de 2005. Seremi de Salud Región Metropolitana. Clasifica como estaciones de monitoreo de calidad de aire con Representación Poblacional para gases de Monóxido de Carbono (CO), Ozono (O3) y Dióxido de Azufre (SO2)",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=160,807,13114,5798c0ec-a22d-4923-a286-4c617b92994a,-70.52325614699998,-33.376776047999954,807
+99,162,Pudahuel,0,"Resolución Nº 121.821 del 28 de diciembre de 2005. Seremi de Salud Región Metropolitana. Clasifica como estaciones de monitoreo de calidad de aire con Representación Poblacional para gases de Monóxido de Carbono (CO), Ozono (O3) y Dióxido de Azufre (SO2)",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=162,485,13124,5798c0ec-a22d-4923-a286-4c617b92994a,-70.75014408699997,-33.43778535699994,485
+100,166,Puente Alto,0,Sin información,Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=166,676,13201,5798c0ec-a22d-4923-a286-4c617b92994a,-70.59443067699993,-33.59135623999998,676
+101,168,Quilicura,0,Sin información,Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=168,490,13125,5798c0ec-a22d-4923-a286-4c617b92994a,-70.74821853999998,-33.36585687799993,490
+102,158,Independencia,0,"Resolución Nº 121.821 del 28 de diciembre de 2005. Seremi de Salud Región Metropolitana. Clasifica como estaciones de monitoreo de calidad de aire con Representación Poblacional para gases de Monóxido de Carbono (CO), Ozono (O3) y Dióxido de Azufre (SO2)",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=158,587,13127,5798c0ec-a22d-4923-a286-4c617b92994a,-70.65113863199997,-33.42226118999997,587
+103,161,Parque O'Higgins,0,"Resolución Nº 121.821 del 28 de diciembre de 2005. Seremi de Salud Región Metropolitana. Clasifica como estaciones de monitoreo de calidad de aire con Representación Poblacional para gases de Monóxido de Carbono (CO), Ozono (O3) y Dióxido de Azufre (SO2)",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=161,541,13101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.66070229199994,-33.464176504999955,541
+104,167,Talagante,0,Sin información,Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=167,343,13601,5798c0ec-a22d-4923-a286-4c617b92994a,-70.95299615699997,-33.67381931299997,343
+105,86,Rancagua,0,"Resolución EMRP Nº5390  del 07 de octubre de 2004<br />
+Resolución EMRPG Nº2359  del 19 de junio de 2006<br />
+Resolución EMRPG Nº2356  del 19 de junio de 2006<br />
+Resolución EMRPG Nº2358  del 19 de junio de 2006<br />
+Resolución EMRPG Nº2357  del",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=86,505,06101,5798c0ec-a22d-4923-a286-4c617b92994a,-70.71414757099996,-34.162244235999935,505
+106,39,Codegua,0,"Resolución EMRP Nº 1064, 15 de febrero de 2005<br />
+Resolución EMRPG Nº 1064, 10 de marzo de 2005<br />
+Resolución EMRPG Nº 1064, 15 de febrero de 2005<br />
+Resolución EMRPG Nº 1064, 10 de marzo de 2005<br />
+Resolución EMRPG Nº 1064, 10 de marzo d",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=39,555,06102,5798c0ec-a22d-4923-a286-4c617b92994a,-70.66038843199993,-34.031907107999984,555
+107,180,Sewell,0,"DS 185/1991 Ministerio de Minería. Dispone instalación de red permanente de monitoreo de calidad del aire en la zona circundante a la fundición
+Resolución Fundada N°3081 Servicio de Salud Región de O?Higgins y
+Resolución N°381 del Servicio Agrícola y G",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=180,2441,06108,5798c0ec-a22d-4923-a286-4c617b92994a,-70.38192172899994,-34.08423853599993,2441
+108,177,Cipreses,0,DS 81/1998 MINSEGPRES Establece Plan de Descontaminación Atmosférica para el Área Circundante a la Fundición Caletones de la División El Teniente de Codelco Chile,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=177,1085,06108,5798c0ec-a22d-4923-a286-4c617b92994a,-70.46332431099995,-34.261961052999936,1085
+109,176,Coya Población,0,"DS 81/1998 MINSEGPRES Establece Plan de Descontaminación para el Área Circundante a la Fundición Caletones de la División El Teniente de Codelco Chile
+PM10:  Resolución EMRP  N°1449 del 16 de abril de 2003
+SO2:    Resolución EMRPG  N°3372 del 20 de ago",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=176,936,06108,5798c0ec-a22d-4923-a286-4c617b92994a,-70.52991937999997,-34.203589776999934,936
+110,179,Coya Club,0,"DS 185/1991 Ministerio de Minería. Dispone instalación de red permanente de monitoreo de calidad del aire en la zona circundante a la fundición.
+Res. Nº 381 del SAG.
+Res. Nº 3081 de la Seremi de Salud.
+DS 81/1998 del MINSEGRES, que establece el Plan d",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=179,963,06108,5798c0ec-a22d-4923-a286-4c617b92994a,-70.54185171099994,-34.201465534999954,963
+111,181,Curanilahue,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=181,215,08205,5798c0ec-a22d-4923-a286-4c617b92994a,-73.33203817099997,-37.485615924999934,215
+112,178,Cauquenes,0,DS 81/1998 MINSEGPRES Establece Plan de Descontaminación Atmosférica para el Área Circundante a la Fundición Caletones de la División El Teniente de Codelco Chile,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=178,930,06108,5798c0ec-a22d-4923-a286-4c617b92994a,-70.55282740799998,-34.24128302199995,930
+113,42,Casas de Peuco,0,"Resolución EMRP Nº1066  del 15 de febrero de 2005<br />
+Resolución EMRPG Nº1603  del 10 de marzo de 2005<br />
+Resolución EMRPG Nº1061  del 15 de febrero de 2005<br />
+Resolución EMRPG Nº1604 del 10 de marzo de 2005<br />
+Resolución EMRPG Nº1602  del",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=42,627,06110,5798c0ec-a22d-4923-a286-4c617b92994a,-70.63903091199995,-33.954183015999945,627
+114,40,San Francisco de Mostazal,0,"Resolución EMRP Nº 1064, 15 de febrero de 2005<br />
+Resolución EMRPG Nº 1064, 10 de marzo de 2005<br />
+Resolución EMRPG Nº 1064, 15 de febrero de 2005<br />
+Resolución EMRPG Nº 1064, 10 de marzo de 2005<br />
+Resolución EMRPG Nº 1064, 10 de marzo d",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=40,498,06110,5798c0ec-a22d-4923-a286-4c617b92994a,-70.70430041199995,-33.980601288999935,498
+115,156,Rengo,0,"PM10:Resolución EMRP Nº2535  del 03 de octubre de 2007
+O3     :Resolución EMRPG Nº2534  del 03 de octubre de 2007",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=156,319,06115,5798c0ec-a22d-4923-a286-4c617b92994a,-70.85305830299995,-34.39430955599994,319
+116,212,Totihue,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=212,388,06116,5798c0ec-a22d-4923-a286-4c617b92994a,-70.79327636199997,-34.328431439999974,388
+117,10,San Fernando,0,"Res N°2534 EMRP y Res N°2535 EMRPG por O3, 3  de octubre de 2007",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=10,311,06301,5798c0ec-a22d-4923-a286-4c617b92994a,-70.98965785499996,-34.579791676999946,311
+118,173,La Florida,0,Res. Nº 205 del 21 de Marzo de 2005. Seremi de Salud VII Región.,Diagnóstico,http://sinca.conama.cl/index.php/estaciones/index?id=173,99,07101,5798c0ec-a22d-4923-a286-4c617b92994a,-71.67857339299997,-35.435312403999944,99
+119,175,UTAL,0,Sin información,Diagnóstico,http://sinca.conama.cl/index.php/estaciones/index?id=175,105,07101,5798c0ec-a22d-4923-a286-4c617b92994a,-71.63329010699994,-35.40635675599998,105
+120,171,Universidad de Los Lagos,0,Sin información,Diagnóstico,http://sinca.conama.cl/index.php/estaciones/index?id=171,224,07301,5798c0ec-a22d-4923-a286-4c617b92994a,-71.23034610899998,-34.97557788599994,224
+121,172,El Boldo,0,Sin información,Diagnóstico,http://sinca.conama.cl/index.php/estaciones/index?id=172,224,07301,5798c0ec-a22d-4923-a286-4c617b92994a,-71.23025862199995,-34.97235208099994,224
+122,170,"Teno, CEMENTOS BIO BIO",0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=170,265,07308,5798c0ec-a22d-4923-a286-4c617b92994a,-71.16393765799995,-34.867956068999945,265
+123,169,"Teno, ENLASA",0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=169,305,07308,5798c0ec-a22d-4923-a286-4c617b92994a,-71.13095020699996,-34.861714192999955,305
+124,117,Kingstone College,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=117,18,08101,5798c0ec-a22d-4923-a286-4c617b92994a,-73.05180396299994,-36.78465453499996,18
+125,113,Coronel Sur,0,"Resolución nº 2769 de 06 de Mayo de 2008 (EMRPG NO2, NO y O3)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=113,17,08102,5798c0ec-a22d-4923-a286-4c617b92994a,-73.13863514499997,-37.03180018599994,17
+126,112,Coronel Norte,0,"Resolución nº 2769 de 06 de Mayo de 2008 (EMRPG MP10, CO,SO2, NO2 y O3)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=112,11,08102,5798c0ec-a22d-4923-a286-4c617b92994a,-73.14799483699994,-37.00885514599997,11
+127,123,Coronel,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=123,17,08102,5798c0ec-a22d-4923-a286-4c617b92994a,-73.14943875799997,-37.021144506999974,17
+128,135,Santista,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=135,73,08103,5798c0ec-a22d-4923-a286-4c617b92994a,-73.03403079999998,-36.91516993899995,73
+129,116,MASISA Mapal,0,Resolución Exenta Nº 5415 del 5 de Diciembre de 2006 (EMRP,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=116,-4,08108,5798c0ec-a22d-4923-a286-4c617b92994a,-73.14120397999994,-36.86708856799993,-4
+130,104,Libertad,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=104,40,08110,5798c0ec-a22d-4923-a286-4c617b92994a,-73.11135493799998,-36.71741861999993,40
+131,103,San Vicente II (Consultorio),0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=103,40,08110,5798c0ec-a22d-4923-a286-4c617b92994a,-73.11351620599999,-36.714308062999976,40
+132,131,Polivalente,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=131,72,08111,5798c0ec-a22d-4923-a286-4c617b92994a,-72.95837433999998,-36.601785631999974,72
+133,126,ENAP Price,0,"Resolución nº 0193 de 19 de Enero de 2009 (EMRPG MP10, NOx, CO, SO2 y O3)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=126,14,08112,5798c0ec-a22d-4923-a286-4c617b92994a,-73.11910926099995,-36.79136253499996,14
+134,106,Bocatoma,0,Resolución nº 1281 de 03 de Septiembre de 2004 (EMRPG MP10 y SO2),Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=106,11,08112,5798c0ec-a22d-4923-a286-4c617b92994a,-73.12037990199997,-36.803109003999964,11
+135,182,Carampangue,0,RES. 8A/458,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=182,7,08202,5798c0ec-a22d-4923-a286-4c617b92994a,-73.24549264799998,-37.26027831299996,7
+136,183,Laraquete,0,"RES. 8A/458 de 24 Abril de 2009 EMRP PM10, SO2, NO2 y O3",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=183,1,08202,5798c0ec-a22d-4923-a286-4c617b92994a,-73.19517161999994,-37.18445340599993,1
+137,155,"Colicheu, Cabrero",0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=155,143,08303,5798c0ec-a22d-4923-a286-4c617b92994a,-72.27741117099998,-37.02379970299995,143
+138,184,El Progreso,0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=184,155,08303,5798c0ec-a22d-4923-a286-4c617b92994a,-72.28937166399999,-37.06828447799995,155
+139,111,"Charrúa, Los Pinos",0,Sin información,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=111,161,08303,5798c0ec-a22d-4923-a286-4c617b92994a,-72.32343808199994,-37.09759835899996,161
+140,133,Quinel,0,Resolución Exenta Nº 1375/2007,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=133,133,08303,5798c0ec-a22d-4923-a286-4c617b92994a,-72.40769084399994,-37.02921552999993,133
+141,109,SAPU,0,Resolución Exenta Nº 1375/2007,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=109,133,08303,5798c0ec-a22d-4923-a286-4c617b92994a,-72.39744040799997,-37.03841735299994,133
+142,134,Entre Ríos,0,"Resolucion Exenta 05625 de 19 Dic. 2008 EMRP TRS
+",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=134,72,08306,5798c0ec-a22d-4923-a286-4c617b92994a,-72.65735819899999,-37.50085322999996,72
+143,215,Poblacion Lautaro,0,"Resolucion Exenta 05625 de 19 Dic. 2008 EMRP TRS
+",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=215,56,08306,5798c0ec-a22d-4923-a286-4c617b92994a,-72.65249920099996,-37.507560540999975,56
+144,216,Cerro Cayumanqui,0,"Resolución Exenta Nº 7039 del 23 de noviembre de 2005, modificada mediante      Resolución Exenta Nº 4502 del 03 de octubre de 2006",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=216,136,08413,5798c0ec-a22d-4923-a286-4c617b92994a,-72.46529681499999,-36.68403369299995,136
+145,132,Quillón,0,"Resolución Exenta Nº 7039 del 23 de noviembre de 2005, modificada mediante      Resolución Exenta Nº 4502 del 03 de octubre de 2006",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=132,68,08413,5798c0ec-a22d-4923-a286-4c617b92994a,-72.47716460199996,-36.74404678199994,68
+146,146,Nueva Aldea,0,"Resolución Exenta Nº 7039 del 23 de noviembre de 2005, modificada mediante      Resolución Exenta Nº 4502 del 03 de octubre de 2006",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=146,39,08415,5798c0ec-a22d-4923-a286-4c617b92994a,-72.45715643999995,-36.65395699599998,39
+147,87,Las Encinas Temuco,90910102,"Res Nº 1480 EMRP, 2 de mayo de 2005",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=87,104,09101,5798c0ec-a22d-4923-a286-4c617b92994a,-72.62106930199997,-38.74884224799996,104
+148,19,Padre Las Casas,90911301,"Res Nº 2046 EMRP, 17 de agosto de 2004",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=19,94,09112,5798c0ec-a22d-4923-a286-4c617b92994a,-72.59508482099994,-38.77266945499997,94
+149,88,Valdivia,0,"Res Nº 288  EMRP, 17 de julio del 2008",Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=88,-2,14101,5798c0ec-a22d-4923-a286-4c617b92994a,-73.22848449899993,-39.83124777599994,-2
+150,209,Antilhue,0,"Resolución nº 4566 de 25 de Octubre de 2004 (EMRPG NO2, NO y O3)",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=209,35,14101,5798c0ec-a22d-4923-a286-4c617b92994a,-73.19717419499995,-39.80417894999994,35
+151,208,Vivero Los Castaños,0,Resolución Exenta N° 2135 del 27 de Noviembre de 2008 de la Autoridad sanitaria,Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=208,7,14101,5798c0ec-a22d-4923-a286-4c617b92994a,-73.12872871499997,-39.71954285299995,7
+152,1,Osorno,0,"Res. Nº 1346  EMRP, 17 de diciembre de 2008",Sin información,http://sinca.conama.cl/index.php/estaciones/index?id=1,53,10301,5798c0ec-a22d-4923-a286-4c617b92994a,-73.11916421399997,-40.58440728399995,53
+153,83,Coyhaique,0,Resolución de la Seremi de salud RES N° 507  que la declara como EMRP del 1 de agosto del  2007,Vigilancia,http://sinca.conama.cl/index.php/estaciones/index?id=83,271,11101,5798c0ec-a22d-4923-a286-4c617b92994a,-72.06087691899995,-45.579498946999934,271
