@@ -40,9 +40,9 @@ The analysis was developed in **R**. To replicate the environment, the following
 
 If you use this code or data in your research, please cite the Zenodo repository:
 
-> Rojas, Constanza, & Blanco, Estela. (2026). Spatiotemporal Analysis of PM2.5 Exposure in the Santiago Metropolitan Region (2022-2024) [Data set/Software]. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> Rojas, Constanza, & Blanco, Estela. (2026). Spatiotemporal Analysis of PM2.5 Exposure in the Santiago Metropolitan Region (2022-2024) [Data set/Software]. Zenodo. https://doi.org/10.5281/zenodo.19133590
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19133590.svg)](https://doi.org/10.5281/zenodo.19133590)
 
 ## 🤖 Note on AI Usage
 The R scripts, data processing pipelines, and the English translation of this documentation were developed collaboratively with Google's Gemini. All AI-generated code and text were rigorously reviewed, tested, and validated by human researchers to ensure accuracy, reproducibility, and scientific rigor.
