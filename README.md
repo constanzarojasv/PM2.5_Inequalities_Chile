@@ -16,7 +16,7 @@ The project follows a structured workflow to ensure the reproducibility of the a
     * `tables/`: Descriptive statistics, healthy days tables, and mixed models results (in `.csv` and `.md` formats).
     * `figures/`: High-resolution spatial maps (`.png`) of concentrations, 98th percentile, and regulatory compliance.
 * **`processing/`**: R scripts that make up the main analysis pipeline (see the "Workflow" section).
-* **`reports/`**: This folder will contain the final manuscript and its corresponding DOI once published. *(Pending upload)*
+
 
 ## ⚙️ Workflow (Pipeline)
 

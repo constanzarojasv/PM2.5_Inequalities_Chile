@@ -114,7 +114,7 @@ mapa_estaciones <- ggplot() +
   annotation_scale(location = "bl", width_hint = 0.3) +
   theme_void()
 
-ggsave("output/figures/mapa_00_estaciones_base.png", plot = mapa_estaciones, width = 8, height = 6, dpi = 300)
+#ggsave("output/figures/mapa_00_estaciones_base.png", plot = mapa_estaciones, width = 8, height = 6, dpi = 300)
 
 
 # ------------------------------------------------------------------------------
@@ -137,7 +137,7 @@ mapa_multinorma <- ggplot(df_mapa_completo) +
         strip.text = element_text(face = "bold", size = 9, margin = margin(b = 10)),
         legend.position = "right", legend.title = element_text(size = 8, face = "bold"), legend.text = element_text(size = 7))
 
-ggsave("output/figures/mapa_01_multinorma.png", plot = mapa_multinorma, width = 8, height = 6, dpi = 300)
+#ggsave("output/figures/mapa_01_multinorma.png", plot = mapa_multinorma, width = 8, height = 6, dpi = 300)
 
 # B) MAP: P98
 df_mapa_unico <- df_mapa_completo %>% filter(norma == "Chile (50 µg/m³)") 
@@ -151,7 +151,7 @@ mapa_p98 <- ggplot(df_mapa_unico) +
         strip.text = element_text(face = "bold", size = 11, margin = margin(b=10)),
         legend.title = element_text(size = 9, face = "bold"), legend.position = "right")
 
-ggsave("output/figures/mapa_02_p98.png", plot = mapa_p98, width = 8, height = 4, dpi = 300)
+#ggsave("output/figures/mapa_02_p98.png", plot = mapa_p98, width = 8, height = 4, dpi = 300)
 
 # C) MAP: ANNUAL AVERAGE
 mapa_promedio <- ggplot(df_mapa_unico) +
@@ -161,5 +161,41 @@ mapa_promedio <- ggplot(df_mapa_unico) +
   facet_wrap(~anio) +
   theme_void() 
 
-ggsave("output/figures/mapa_03_promedio_anual.png", plot = mapa_promedio, width = 8, height = 4, dpi = 300)
+#ggsave("output/figures/mapa_03_promedio_anual.png", plot = mapa_promedio, width = 8, height = 4, dpi = 300)
 
+# ------------------------------------------------------------------------------
+# D) MAP: P98 WINTER ONLY (PERIOD GEC)
+# ------------------------------------------------------------------------------
+
+# 1. Calculate P98 exclusively for winter using daily data
+datos_invierno_p98 <- df_analisis %>%
+  filter(es_invierno == "Winter") %>%
+  group_by(comuna, anio) %>%
+  summarise(p98 = quantile(mp25_prom_valid, 0.98, type = 7, na.rm = TRUE), .groups = "drop") %>%
+  mutate(name_com = recode(comuna, !!!edit_com))
+
+# 2. Create a base grid to ensure ALL background communes appear in every facet year
+base_grid_invierno <- tibble(name_com = unique(rm_sf$name_com)) %>%
+  crossing(anio = unique(datos_invierno_p98$anio))
+
+# 3. Join the data: First to the grid, then to the spatial geometry
+df_mapa_invierno <- rm_sf %>%
+  left_join(
+    base_grid_invierno %>% left_join(datos_invierno_p98, by = c("name_com", "anio")),
+    by = "name_com"
+  )
+
+# 4. Generate the map
+mapa_p98_invierno <- ggplot(df_mapa_invierno) +
+  geom_sf(aes(fill = p98), color = "grey60", linewidth = 0.2) +
+  # Usamos grey90 de vuelta para mantener coherencia estética con tu mapa original
+  scale_fill_gradientn(colours = aqi_cols, na.value = "grey90", name = expression("Winter "~P[98]~"("*mu*"g/"*m^3*")")) +
+  geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), stat = "sf_coordinates", size = 3, fontface = "bold", color = "black", bg.color = "white") +
+  facet_wrap(~anio) +
+  theme_void() + 
+  theme(plot.margin = margin(t = 10, r = 20, b = 10, l = 10),
+        strip.text = element_text(face = "bold", size = 11, margin = margin(b=10)),
+        legend.title = element_text(size = 9, face = "bold"), legend.position = "right")
+
+# 5. Save the plot
+ggsave("output/figures/map_04_p98_winter.png", plot = mapa_p98_invierno, width = 8, height = 4, dpi = 300)
