@@ -1,8 +1,13 @@
-# Spatiotemporal Analysis of PM2.5 Exposure in the Santiago Metropolitan Region (2022-2024)
+# Persistent Inequalities in Air Quality Across Municipalities in Santiago, Chile: 2022–2024
 
 This repository contains the code and data structure used to analyze the spatiotemporal trajectories of fine particulate matter (PM2.5) pollution across 10 municipalities in the Santiago Metropolitan Region, Chile. 
 
 The project evaluates the impact of sociodemographic variables (multidimensional poverty, population density) and seasonal factors (winter-biomass interaction) on PM2.5 concentrations, contrasting national regulatory compliance with US Environmental Protection Agency (EPA) and World Health Organization (WHO) guidelines.
+
+## 👥 Research Team
+
+* Constanza Rojas (cprojas11@uc.cl) - Principal Investigator / Repository Manager
+* Estela Blanco (estela.blanco@uc.cl) - Faculty Sponsor
 
 ## 📂 Repository Structure
 
@@ -40,7 +45,7 @@ The analysis was developed in **R**. To replicate the environment, the following
 
 If you use this code or data in your research, please cite the Zenodo repository:
 
-> Rojas, Constanza, & Blanco, Estela. (2026). Spatiotemporal Analysis of PM2.5 Exposure in the Santiago Metropolitan Region (2022-2024) [Data set/Software]. Zenodo. https://doi.org/10.5281/zenodo.19133590
+> Rojas, Constanza, & Blanco, Estela. (2026). Persistent Inequalities in Air Quality Across Municipalities in Santiago, Chile: 2022–2024 [Data set/Software]. Zenodo. https://doi.org/10.5281/zenodo.19133590
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19133590.svg)](https://doi.org/10.5281/zenodo.19133590)
 
