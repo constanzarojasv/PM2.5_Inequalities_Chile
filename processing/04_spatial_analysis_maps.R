@@ -69,13 +69,13 @@ est_h <- elevatr::get_elev_point(est_wgs, src = "aws")
 
 # Guardar en la columna 'altura' y exportar
 est_wgs$altura <- est_h$elevation
-write_csv(
-  cbind(st_drop_geometry(est_wgs), 
-        longitud = st_coordinates(est_wgs)[,1], 
-        latitud = st_coordinates(est_wgs)[,2], 
-        altura = est_wgs$altura),
-  "output/tables/table_estaciones_con_altura.csv"
-)
+#write_csv(
+#  cbind(st_drop_geometry(est_wgs), 
+#        longitud = st_coordinates(est_wgs)[,1], 
+#        latitud = st_coordinates(est_wgs)[,2], 
+#        altura = est_wgs$altura),
+#  "output/tables/table_estaciones_con_altura.csv"
+#)
 
 # 1. Identificamos estrictamente las 10 comunas del estudio
 comunas_estudio <- rm_sf %>% filter(name_com %in% names(id_map))
@@ -86,8 +86,6 @@ estaciones_rm <- st_intersection(est_wgs, comunas_estudio)
 # ==============================================================================
 # 6. GENERATING MAPS
 # ==============================================================================
-dir.create("output/figures", showWarnings = FALSE, recursive = TRUE)
-
 # Preparar etiquetas numéricas para los mapas
 sf_use_s2(FALSE) 
 label_pts <- rm_sf %>% st_point_on_surface() %>% 
@@ -198,4 +196,55 @@ mapa_p98_invierno <- ggplot(df_mapa_invierno) +
         legend.title = element_text(size = 9, face = "bold"), legend.position = "right")
 
 # 5. Save the plot
-ggsave("output/figures/map_04_p98_winter.png", plot = mapa_p98_invierno, width = 8, height = 4, dpi = 300)
+#ggsave("output/figures/map_04_p98_winter.png", plot = mapa_p98_invierno, width = 8, height = 4, dpi = 300)
+
+# ------------------------------------------------------------------------------
+# E) MAP: MULTI-NORM COMPLIANCE (3x3) - WINTER ONLY
+# ------------------------------------------------------------------------------
+
+# 1. Calcular el cumplimiento de las normativas exclusivamente para invierno
+datos_invierno_multinorma <- df_analisis %>%
+  filter(es_invierno == "Winter") %>%
+  group_by(comuna, anio) %>%
+  summarise(
+    `Chile (50 µg/m³)` = mean(mp25_prom_valid <= 50, na.rm=TRUE) * 100,
+    `EPA (35 µg/m³)`   = mean(mp25_prom_valid <= 35, na.rm=TRUE) * 100,
+    `WHO (15 µg/m³)`   = mean(mp25_prom_valid <= 15, na.rm=TRUE) * 100,
+    .groups = "drop"
+  ) %>%
+  mutate(name_com = recode(comuna, !!!edit_com)) %>%
+  pivot_longer(cols = c(`Chile (50 µg/m³)`, `EPA (35 µg/m³)`, `WHO (15 µg/m³)`),
+               names_to = "norma", 
+               values_to = "pct_cumple") %>%
+  mutate(norma = factor(norma, levels = c("Chile (50 µg/m³)", "EPA (35 µg/m³)", "WHO (15 µg/m³)")))
+
+# 2. Crear grilla base para asegurar que aparezcan todas las comunas de fondo (Comuna x Año x Norma)
+base_grid_invierno_multi <- tibble(name_com = unique(rm_sf$name_com)) %>%
+  crossing(
+    anio = unique(datos_invierno_multinorma$anio), 
+    norma = unique(datos_invierno_multinorma$norma)
+  )
+
+# 3. Unir datos: Grilla -> Datos de invierno -> Geometría espacial
+df_mapa_invierno_multi <- rm_sf %>% 
+  left_join(
+    base_grid_invierno_multi %>% left_join(datos_invierno_multinorma, by = c("name_com", "anio", "norma")), 
+    by = "name_com"
+  )
+
+# 4. Generar el mapa facetado (3x3)
+mapa_multinorma_invierno <- ggplot(df_mapa_invierno_multi) +
+  geom_sf(aes(fill = pct_cumple), color = "grey60", linewidth = 0.2) +
+  # Usamos rev(aqi_cols) para que los porcentajes altos (100% cumple) tengan colores "sanos"
+  scale_fill_gradientn(colours = rev(aqi_cols), na.value = "grey90", name = "% Healthy days\n(Winter)", limits = c(0, 100)) +
+  geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), stat = "sf_coordinates", size = 2.5, fontface = "bold", color = "black", bg.color = "white") +
+  facet_grid(anio ~ norma) + 
+  theme_void() + 
+  theme(plot.margin = margin(t = 20, r = 5, b = 5, l = 5),
+        strip.text = element_text(face = "bold", size = 9, margin = margin(b = 10)),
+        legend.position = "right", 
+        legend.title = element_text(size = 8, face = "bold"), 
+        legend.text = element_text(size = 7))
+
+# 5. Guardar el gráfico
+#ggsave("output/figures/mapa_05_multinorma_winter.png", plot = mapa_multinorma_invierno, width = 8, height = 6, dpi = 300)
