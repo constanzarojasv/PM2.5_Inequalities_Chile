@@ -55,3 +55,4 @@ tabla_s2 <- tabla_anual_hw %>%
 #write_csv(tabla_s2, "output/tables/table_S2_healthy_days.csv")
 #writeLines(kable(tabla_s2, format = "markdown"), "output/tables/table_S2_healthy_days.md")
 
+rm(list = ls())

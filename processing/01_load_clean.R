@@ -37,3 +37,5 @@ df_analisis <- df_crudo %>%
 
 # 4. SAVE
 write_rds(df_analisis, "input/data_processed/datos_analisis_final.rds")
+
+rm(list = ls())

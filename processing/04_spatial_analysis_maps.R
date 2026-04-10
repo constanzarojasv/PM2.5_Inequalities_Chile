@@ -248,3 +248,5 @@ mapa_multinorma_invierno <- ggplot(df_mapa_invierno_multi) +
 
 # 5. Guardar el gráfico
 #ggsave("output/figures/mapa_05_multinorma_winter.png", plot = mapa_multinorma_invierno, width = 8, height = 6, dpi = 300)
+
+rm(list = ls())

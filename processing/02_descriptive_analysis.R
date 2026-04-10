@@ -68,4 +68,4 @@ tabla_invierno <- df_analisis %>%
 #writeLines(kable(tabla_anual, format = "markdown"), "output/tables/table_1_anual.md")
 #writeLines(kable(tabla_invierno, format = "markdown"), "output/tables/table_2_winter.md")
 
-
+rm(list = ls())

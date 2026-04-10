@@ -113,3 +113,5 @@ cat("\n\n", nota_pie, "\n")
 sink()
 
 print("Model saved and full Table 5 generated in 'output/tables/table_5_mixed_model.md'")
+
+rm(list = ls())
