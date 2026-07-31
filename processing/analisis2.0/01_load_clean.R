@@ -3,7 +3,7 @@
 # ==============================================================================
 
 # Load functions from script 00
-source("processing/00_setup_functions.R", encoding = "UTF-8")
+source("processing/analisis2.0/00_setup_functions.R", encoding = "UTF-8")
 
 # 1. INDIVIDUAL LOAD (Manual control)
 # We call the function explicitly for each municipality
@@ -70,12 +70,30 @@ df_analisis <- df_crudo %>%
   )
 
 # 5. SAVE
-write_rds(df_analisis, "input/data_processed/datos_analisis_final.rds")
+write_rds(df_analisis, "input/data_processed/datos_analisis_final_2.0.rds")
 
 # Monthly completeness table, exported so the % of missing/invalid data per
 # station-month is documented and citable (Reviewer 1: "what percentage of
 # missing values / how were they handled").
 write_csv(tabla_completitud_mensual, "output/tables/table_S1_completeness.csv")
 write_xlsx(tabla_completitud_mensual, "output/tables/table_S1_completeness.xlsx")
+
+
+rm(list = ls())
+
+#Missing values 
+tabla_s1 <- read_csv("output/tables/table_S1_completeness.csv")
+
+# % global de días válidos vs programados
+tabla_s1 %>% summarise(pct_dias_validos_global = sum(dias_validos)/sum(dias_programados)*100)
+
+# cuántas estaciones-año quedaron excluidas / cuántas imputadas
+df <- readRDS("input/data_processed/datos_analisis_final_2.0.rds")
+df %>% distinct(comuna, anio, anio_conforme, n_meses_imputados) %>%
+  summarise(
+    n_total = n(),
+    n_excluidas = sum(!anio_conforme),
+    n_imputadas = sum(anio_conforme & n_meses_imputados > 0)
+  )
 
 rm(list = ls())
