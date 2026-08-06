@@ -9,21 +9,21 @@
 |Predictors                      |   Estimate    |        95% CI         | p value  |
 |:-------------------------------|:-------------:|:---------------------:|:--------:|
 |**Fixed Effects**               |               |                       |          |
-|(Intercept)                     |   -2812.41    | [-3423.93 – -2200.89] | < 0.001* |
-|Year                            |     -1.40     |    [-1.71 – -1.10]    | < 0.001* |
-|Poverty (%)                     |     0.17      |    [-0.42 – 0.77]     |  0.486   |
-|Density (1,000 inhabitants/km²) |     -0.01     |    [-0.38 – 0.37]     |  0.952   |
-|Altitude (per 100m)             |     -1.30     |    [-4.36 – 1.77]     |  0.326   |
-|Season [Winter (GEC)]           |     22.12     |    [21.54 – 22.70]    | < 0.001* |
-|Biomass heaters^a               |    -0.0059    |    [-0.02 – 0.00]     |  0.185   |
-|Winter × Biomass                |    0.0025     |     [0.00 – 0.00]     |  0.004*  |
+|(Intercept)                     |   -2631.61    | [-3267.64 – -1995.59] | < 0.001* |
+|Year                            |     -1.31     |    [-1.63 – -1.00]    | < 0.001* |
+|Poverty (%)                     |     0.15      |    [-0.45 – 0.75]     |  0.549   |
+|Density (1,000 inhabitants/km²) |     0.00      |    [-0.38 – 0.38]     |  0.990   |
+|Altitude (per 100m)             |     -1.32     |    [-4.42 – 1.79]     |  0.325   |
+|Season [Winter (GEC)]           |     21.85     |    [21.26 – 22.44]    | < 0.001* |
+|Biomass heaters^a               |    -0.0060    |    [-0.02 – 0.00]     |  0.184   |
+|Winter × Biomass                |    0.0030     |     [0.00 – 0.00]     | < 0.001* |
 |**Random Effects**              |               |                       |          |
-|σ² (Residual Variance)          |    165.65     |                       |          |
-|τ00 (Between-municipality)      |     5.04      |                       |          |
+|σ² (Residual Variance)          |    162.19     |                       |          |
+|τ00 (Between-municipality)      |     5.17      |                       |          |
 |ICC                             |     0.03      |                       |          |
 |**Model Fit**                   |               |                       |          |
-|Observations                    |     10410     |                       |          |
-|Marginal R² / Cond. R²          | 0.415 / 0.432 |                       |          |
+|Observations                    |     9785      |                       |          |
+|Marginal R² / Cond. R²          | 0.413 / 0.431 |                       |          |
 
 > cat("\n\n", nota_pie_geo, "\n")
 

@@ -3,7 +3,7 @@
 # Purpose: Run Linear Mixed Models (LMM) and export summary tables
 # ==============================================================================
 
-source("processing/00_setup_functions.R", encoding = "UTF-8")
+source("processing/analisis1.0/00_setup_functions.R", encoding = "UTF-8")
 
 
 # 1. Load Clean Data

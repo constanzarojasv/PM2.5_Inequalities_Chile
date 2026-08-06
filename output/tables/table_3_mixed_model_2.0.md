@@ -9,21 +9,21 @@
 |Predictors                 |   Estimate    |     95% CI      | p value  |
 |:--------------------------|:-------------:|:---------------:|:--------:|
 |**Fixed Effects**          |               |                 |          |
-|(Intercept)                |     23.74     | [-2.73 – 50.20] |  0.069   |
-|Year                       |     -1.40     | [-1.71 – -1.10] | < 0.001* |
-|altitude                   |     -0.01     | [-0.04 – 0.02]  |  0.326   |
-|Poverty (%)                |     0.17      | [-0.42 – 0.77]  |  0.486   |
-|Density (inhabitants/km²)  |    -9e-06     | [-0.00 – 0.00]  |  0.952   |
-|Season [Winter (GEC)]      |     22.12     | [21.54 – 22.70] | < 0.001* |
-|Biomass heaters^a          |    -0.0059    | [-0.02 – 0.00]  |  0.185   |
-|Winter × Biomass           |    0.0025     |  [0.00 – 0.00]  |  0.004*  |
+|(Intercept)                |     24.00     | [-2.81 – 50.82] |  0.070   |
+|Year                       |     -1.31     | [-1.63 – -1.00] | < 0.001* |
+|altitude                   |     -0.01     | [-0.04 – 0.02]  |  0.325   |
+|Poverty (%)                |     0.15      | [-0.45 – 0.75]  |  0.549   |
+|Density (inhabitants/km²)  |     2e-06     | [-0.00 – 0.00]  |  0.990   |
+|Season [Winter (GEC)]      |     21.85     | [21.26 – 22.44] | < 0.001* |
+|Biomass heaters^a          |    -0.0060    | [-0.02 – 0.00]  |  0.184   |
+|Winter × Biomass           |    0.0030     |  [0.00 – 0.00]  | < 0.001* |
 |**Random Effects**         |               |                 |          |
-|σ² (Residual Variance)     |    165.65     |                 |          |
-|τ00 (Between-municipality) |     5.04      |                 |          |
+|σ² (Residual Variance)     |    162.19     |                 |          |
+|τ00 (Between-municipality) |     5.17      |                 |          |
 |ICC                        |     0.03      |                 |          |
 |**Model Fit**              |               |                 |          |
-|Observations               |     10410     |                 |          |
-|Marginal R² / Cond. R²     | 0.415 / 0.432 |                 |          |
+|Observations               |     9785      |                 |          |
+|Marginal R² / Cond. R²     | 0.413 / 0.431 |                 |          |
 
 > cat("\n\n", nota_pie, "\n")
 
