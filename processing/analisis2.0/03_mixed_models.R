@@ -327,7 +327,7 @@ print("--- RUNNING MODEL 6: SENSITIVITY - EXCLUDING TALAGANTE (AR2) ---")
 
 datos_modelo_sin_talagante <- datos_modelo %>%
   filter(comuna != "Talagante") %>%
-  mutate(comuna = droplevels(comuna)) # saca el nivel de factor vacio
+  mutate(comuna = droplevels(as.factor(comuna))) # saca el nivel de factor vacio
 
 n_filas_talagante <- datos_modelo %>% filter(comuna == "Talagante") %>% nrow()
 print(paste("--- Excluding", n_filas_talagante, "daily records from Talagante ---"))
@@ -470,4 +470,3 @@ sink()
 
 print("Model saved and full table generated in 'output/tables/table_5_mixed_model_AR2_2.0.md'")
 
-rm(list = ls())
