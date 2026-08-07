@@ -34,13 +34,19 @@ calcular_tabla_resumen <- function(df, titulo_tabla, periodo = c("anual", "invie
   } else {
     df <- df %>%
       mutate(
-        Conforme = invierno_conforme,
-        Motivo_no_conforme = if_else(
-          invierno_conforme, NA_character_,
-          paste0("Mes(es) de invierno bajo 75% de cobertura: ", meses_invierno_no_validos)
-        ),
-        # out of the 4 winter months (May-Aug); NOT the annual n_meses_validos
         Meses_validos_periodo = 4L - lengths(strsplit(meses_invierno_no_validos, ",")),
+        # Antes se exigian los 4 meses de invierno completos. Ahora, por
+        # indicacion de la tutora: con 3 o 4 meses validos se mantiene el
+        # resultado (calculado con los dias validos disponibles), solo se
+        # marca que falta 1 mes en vez de excluir la estacion-invierno. Con
+        # menos de 3 meses validos se sigue tratando como no conforme (no hay
+        # casos actuales, pero se deja la regla general).
+        Conforme = Meses_validos_periodo >= 3,
+        Motivo_no_conforme = case_when(
+          Meses_validos_periodo == 4 ~ NA_character_,
+          Meses_validos_periodo == 3 ~ paste0("Falta 1 mes de invierno (mes ", meses_invierno_no_validos, ") bajo 75% de cobertura"),
+          TRUE ~ paste0("Mes(es) de invierno bajo 75% de cobertura: ", meses_invierno_no_validos)
+        ),
         # The decree's imputation rule is only defined for the annual value;
         # it does not apply to the winter sub-period (see decision log).
         Imputado = NA

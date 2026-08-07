@@ -312,3 +312,6 @@ comparacion_interaccion <- bind_rows(
   select(modelo, estimate, conf.low, conf.high, p.value)
 
 print(comparacion_interaccion)
+
+
+#FALTA HACER TODO CON AR(2)
