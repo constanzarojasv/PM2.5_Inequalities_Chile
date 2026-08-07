@@ -3,10 +3,10 @@
 # Purpose: Calculate elevations, map monitoring stations, and plot PM2.5 metrics
 # ==============================================================================
 
-source("processing/00_setup_functions.R", encoding = "UTF-8")
+source("processing/analisis2.0/00_setup_functions.R", encoding = "UTF-8")
 
 # 1. LOAD CLEAN DATA
-df_analisis <- read_rds("input/data_processed/datos_analisis_final.rds")
+df_analisis <- read_rds("input/data_processed/datos_analisis_final_2.0.rds")
 
 # 2. CONFIGURATION: IDs AND NAMES
 id_map <- c("Cerrillos"="1", "Cerro Navia"="2", "El Bosque"="3", "La Florida"="4",
@@ -15,26 +15,34 @@ id_map <- c("Cerrillos"="1", "Cerro Navia"="2", "El Bosque"="3", "La Florida"="4
 
 edit_com <- c("Cerro Navia"="Cerro Navia", "El Bosque"="El Bosque", "La Florida"="La Florida",
               "Las Condes"="Las Condes", "Pudahuel"="Pudahuel", "Puente Alto"="Puente Alto",
-              "Quilicura"="Quilicura", "Parque O'Higgins"="Santiago", 
+              "Quilicura"="Quilicura", "Parque O'Higgins"="Santiago",
               "Talagante"="Talagante", "Cerrillos"="Cerrillos")
 
 # ==============================================================================
 # 3. HEALTHY DAYS CALCULATION (MULTI-NORM COMPLIANCE)
 # ==============================================================================
 print("--- Calculating Healthy Days and Metrics ---")
+# Chile/EPA/WHO % y promedio_anual quedan en NA para las estacion-anios no
+# conformes (Decreto 12/2011) -- mismo criterio que Tabla 2 y Supplementary
+# Table 3 (healthy days), para que los mapas no pinten un valor calculado
+# sobre datos incompletos (Revisor 2). p98 se deja SIEMPRE visible, igual
+# que en Tabla 2 (Min/Max/P98 se muestran por transparencia aunque el anio
+# no sea conforme; solo el promedio/los % se suprimen).
 datos_mapa_long <- df_analisis %>%
   group_by(comuna, anio) %>%
   summarise(
-    `Chile (50 µg/m³)` = mean(mp25_prom_valid <= 50, na.rm=TRUE) * 100,
-    `EPA (35 µg/m³)`   = mean(mp25_prom_valid <= 35, na.rm=TRUE) * 100,
-    `WHO (15 µg/m³)`   = mean(mp25_prom_valid <= 15, na.rm=TRUE) * 100,
+    conforme_anio = first(anio_conforme),
+    `Chile (50 µg/m³)` = if_else(conforme_anio, mean(mp25_prom_valid <= 50, na.rm=TRUE) * 100, NA_real_),
+    `EPA (35 µg/m³)`   = if_else(conforme_anio, mean(mp25_prom_valid <= 35, na.rm=TRUE) * 100, NA_real_),
+    `WHO (15 µg/m³)`   = if_else(conforme_anio, mean(mp25_prom_valid <= 15, na.rm=TRUE) * 100, NA_real_),
     p98 = quantile(mp25_prom_valid, 0.98, type=7, na.rm=TRUE),
-    promedio_anual = mean(mp25_prom_valid, na.rm=TRUE),
+    promedio_anual = if_else(conforme_anio, first(promedio_anual_regulatorio), NA_real_),
     .groups = "drop"
   ) %>%
+  select(-conforme_anio) %>%
   mutate(name_com = recode(comuna, !!!edit_com)) %>%
   pivot_longer(cols = c(`Chile (50 µg/m³)`, `EPA (35 µg/m³)`, `WHO (15 µg/m³)`),
-               names_to = "norma", 
+               names_to = "norma",
                values_to = "pct_cumple") %>%
   mutate(norma = factor(norma, levels = c("Chile (50 µg/m³)", "EPA (35 µg/m³)", "WHO (15 µg/m³)")))
 
@@ -70,9 +78,9 @@ est_h <- elevatr::get_elev_point(est_wgs, src = "aws")
 # Guardar en la columna 'altura' y exportar
 est_wgs$altura <- est_h$elevation
 #write_csv(
-#  cbind(st_drop_geometry(est_wgs), 
-#        longitud = st_coordinates(est_wgs)[,1], 
-#        latitud = st_coordinates(est_wgs)[,2], 
+#  cbind(st_drop_geometry(est_wgs),
+#        longitud = st_coordinates(est_wgs)[,1],
+#        latitud = st_coordinates(est_wgs)[,2],
 #        altura = est_wgs$altura),
 #  "output/tables/table_estaciones_con_altura.csv"
 #)
@@ -87,9 +95,9 @@ estaciones_rm <- st_intersection(est_wgs, comunas_estudio)
 # 6. GENERATING MAPS
 # ==============================================================================
 # Preparar etiquetas numéricas para los mapas
-sf_use_s2(FALSE) 
-label_pts <- rm_sf %>% st_point_on_surface() %>% 
-  mutate(label_id = id_map[name_com]) %>% 
+sf_use_s2(FALSE)
+label_pts <- rm_sf %>% st_point_on_surface() %>%
+  mutate(label_id = id_map[name_com]) %>%
   filter(!is.na(label_id))
 
 # ------------------------------------------------------------------------------
@@ -101,18 +109,18 @@ mapa_estaciones <- ggplot() +
   # Puntos de las estaciones (Triángulos = shape 17)
   geom_sf(data = estaciones_rm, shape = 17, size = 3, color = "darkred") +
   # Etiquetas de comunas
-  geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), 
-                  stat = "sf_coordinates", size = 3, fontface = "bold", 
+  geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id),
+                  stat = "sf_coordinates", size = 3, fontface = "bold",
                   color = "black", bg.color = "white") +
   # Rosa de los vientos (Norte)
-  annotation_north_arrow(location = "tl", which_north = "true", 
+  annotation_north_arrow(location = "tl", which_north = "true",
                          pad_x = unit(0.2, "in"), pad_y = unit(0.2, "in"),
                          style = north_arrow_fancy_orienteering) +
   # Escala espacial (Opcional, pero muy útil para papers)
   annotation_scale(location = "bl", width_hint = 0.3) +
   theme_void()
 
-#ggsave("output/figures/mapa_00_estaciones_base.png", plot = mapa_estaciones, width = 8, height = 6, dpi = 300)
+ggsave("output/figures/mapa_00_estaciones_base_2.0.png", plot = mapa_estaciones, width = 8, height = 6, dpi = 300)
 
 
 # ------------------------------------------------------------------------------
@@ -129,27 +137,27 @@ mapa_multinorma <- ggplot(df_mapa_completo) +
   geom_sf(aes(fill = pct_cumple), color = "grey60", linewidth = 0.2) +
   scale_fill_gradientn(colours = rev(aqi_cols), na.value = "grey90", name = "% Healthy days", limits = c(0, 100)) +
   geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), stat = "sf_coordinates", size = 2.5, fontface = "bold", color = "black", bg.color = "white") +
-  facet_grid(anio ~ norma) + 
-  theme_void() + 
+  facet_grid(anio ~ norma) +
+  theme_void() +
   theme(plot.margin = margin(t = 20, r = 5, b = 5, l = 5),
         strip.text = element_text(face = "bold", size = 9, margin = margin(b = 10)),
         legend.position = "right", legend.title = element_text(size = 8, face = "bold"), legend.text = element_text(size = 7))
 
-#ggsave("output/figures/mapa_01_multinorma.png", plot = mapa_multinorma, width = 8, height = 6, dpi = 300)
+ggsave("output/figures/mapa_01_multinorma_2.0.png", plot = mapa_multinorma, width = 8, height = 6, dpi = 300)
 
 # B) MAP: P98
-df_mapa_unico <- df_mapa_completo %>% filter(norma == "Chile (50 µg/m³)") 
+df_mapa_unico <- df_mapa_completo %>% filter(norma == "Chile (50 µg/m³)")
 mapa_p98 <- ggplot(df_mapa_unico) +
   geom_sf(aes(fill = p98), color = "grey60", linewidth = 0.2) +
   scale_fill_gradientn(colours = aqi_cols, na.value = "grey90", name = expression(P[98]~"("*mu*"g/"*m^3*")")) +
   geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), stat = "sf_coordinates", size = 3, fontface = "bold", color = "black", bg.color = "white") +
   facet_wrap(~anio) +
-  theme_void() + 
+  theme_void() +
   theme(plot.margin = margin(t = 10, r = 20, b = 10, l = 10),
         strip.text = element_text(face = "bold", size = 11, margin = margin(b=10)),
         legend.title = element_text(size = 9, face = "bold"), legend.position = "right")
 
-#ggsave("output/figures/mapa_02_p98.png", plot = mapa_p98, width = 8, height = 4, dpi = 300)
+ggsave("output/figures/mapa_02_p98_2.0.png", plot = mapa_p98, width = 8, height = 4, dpi = 300)
 
 # C) MAP: ANNUAL AVERAGE
 mapa_promedio <- ggplot(df_mapa_unico) +
@@ -157,15 +165,16 @@ mapa_promedio <- ggplot(df_mapa_unico) +
   scale_fill_gradientn(colours = aqi_cols, na.value = "grey90", name = "Promedio") +
   geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), stat = "sf_coordinates", size = 3, fontface = "bold", color = "black", bg.color = "white") +
   facet_wrap(~anio) +
-  theme_void() 
+  theme_void()
 
-#ggsave("output/figures/mapa_03_promedio_anual.png", plot = mapa_promedio, width = 8, height = 4, dpi = 300)
+ggsave("output/figures/mapa_03_promedio_anual_2.0.png", plot = mapa_promedio, width = 8, height = 4, dpi = 300)
 
 # ------------------------------------------------------------------------------
 # D) MAP: P98 WINTER ONLY (PERIOD GEC)
 # ------------------------------------------------------------------------------
 
-# 1. Calculate P98 exclusively for winter using daily data
+# 1. Calculate P98 exclusively for winter using daily data (se deja siempre
+# visible, igual que el p98 anual -- ver nota en el punto 3)
 datos_invierno_p98 <- df_analisis %>%
   filter(es_invierno == "Winter") %>%
   group_by(comuna, anio) %>%
@@ -190,45 +199,57 @@ mapa_p98_invierno <- ggplot(df_mapa_invierno) +
   scale_fill_gradientn(colours = aqi_cols, na.value = "grey90", name = expression("Winter "~P[98]~"("*mu*"g/"*m^3*")")) +
   geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), stat = "sf_coordinates", size = 3, fontface = "bold", color = "black", bg.color = "white") +
   facet_wrap(~anio) +
-  theme_void() + 
+  theme_void() +
   theme(plot.margin = margin(t = 10, r = 20, b = 10, l = 10),
         strip.text = element_text(face = "bold", size = 11, margin = margin(b=10)),
         legend.title = element_text(size = 9, face = "bold"), legend.position = "right")
 
 # 5. Save the plot
-#ggsave("output/figures/map_04_p98_winter.png", plot = mapa_p98_invierno, width = 8, height = 4, dpi = 300)
+ggsave("output/figures/map_04_p98_winter_2.0.png", plot = mapa_p98_invierno, width = 8, height = 4, dpi = 300)
 
 # ------------------------------------------------------------------------------
 # E) MAP: MULTI-NORM COMPLIANCE (3x3) - WINTER ONLY
 # ------------------------------------------------------------------------------
 
 # 1. Calcular el cumplimiento de las normativas exclusivamente para invierno
+# Usa el MISMO criterio que Tabla 2/Supplementary Table 3 para invierno: con
+# 3 o 4 de los 4 meses de invierno validos se mantiene el resultado, con
+# menos de 3 queda NA. NO se usa la columna invierno_conforme cruda del
+# dataset (esa exige los 4 meses completos, era la regla vieja) -- se
+# recalcula aqui mismo para quedar consistente con lo que ya se decidio
+# para las tablas.
 datos_invierno_multinorma <- df_analisis %>%
   filter(es_invierno == "Winter") %>%
+  mutate(
+    meses_validos_invierno = 4L - lengths(strsplit(meses_invierno_no_validos, ",")),
+    conforme_invierno = meses_validos_invierno >= 3
+  ) %>%
   group_by(comuna, anio) %>%
   summarise(
-    `Chile (50 µg/m³)` = mean(mp25_prom_valid <= 50, na.rm=TRUE) * 100,
-    `EPA (35 µg/m³)`   = mean(mp25_prom_valid <= 35, na.rm=TRUE) * 100,
-    `WHO (15 µg/m³)`   = mean(mp25_prom_valid <= 15, na.rm=TRUE) * 100,
+    conforme_invierno = first(conforme_invierno),
+    `Chile (50 µg/m³)` = if_else(conforme_invierno, mean(mp25_prom_valid <= 50, na.rm=TRUE) * 100, NA_real_),
+    `EPA (35 µg/m³)`   = if_else(conforme_invierno, mean(mp25_prom_valid <= 35, na.rm=TRUE) * 100, NA_real_),
+    `WHO (15 µg/m³)`   = if_else(conforme_invierno, mean(mp25_prom_valid <= 15, na.rm=TRUE) * 100, NA_real_),
     .groups = "drop"
   ) %>%
+  select(-conforme_invierno) %>%
   mutate(name_com = recode(comuna, !!!edit_com)) %>%
   pivot_longer(cols = c(`Chile (50 µg/m³)`, `EPA (35 µg/m³)`, `WHO (15 µg/m³)`),
-               names_to = "norma", 
+               names_to = "norma",
                values_to = "pct_cumple") %>%
   mutate(norma = factor(norma, levels = c("Chile (50 µg/m³)", "EPA (35 µg/m³)", "WHO (15 µg/m³)")))
 
 # 2. Crear grilla base para asegurar que aparezcan todas las comunas de fondo (Comuna x Año x Norma)
 base_grid_invierno_multi <- tibble(name_com = unique(rm_sf$name_com)) %>%
   crossing(
-    anio = unique(datos_invierno_multinorma$anio), 
+    anio = unique(datos_invierno_multinorma$anio),
     norma = unique(datos_invierno_multinorma$norma)
   )
 
 # 3. Unir datos: Grilla -> Datos de invierno -> Geometría espacial
-df_mapa_invierno_multi <- rm_sf %>% 
+df_mapa_invierno_multi <- rm_sf %>%
   left_join(
-    base_grid_invierno_multi %>% left_join(datos_invierno_multinorma, by = c("name_com", "anio", "norma")), 
+    base_grid_invierno_multi %>% left_join(datos_invierno_multinorma, by = c("name_com", "anio", "norma")),
     by = "name_com"
   )
 
@@ -238,15 +259,15 @@ mapa_multinorma_invierno <- ggplot(df_mapa_invierno_multi) +
   # Usamos rev(aqi_cols) para que los porcentajes altos (100% cumple) tengan colores "sanos"
   scale_fill_gradientn(colours = rev(aqi_cols), na.value = "grey90", name = "% Healthy days\n(Winter)", limits = c(0, 100)) +
   geom_shadowtext(data = label_pts, aes(geometry = geometry, label = label_id), stat = "sf_coordinates", size = 2.5, fontface = "bold", color = "black", bg.color = "white") +
-  facet_grid(anio ~ norma) + 
-  theme_void() + 
+  facet_grid(anio ~ norma) +
+  theme_void() +
   theme(plot.margin = margin(t = 20, r = 5, b = 5, l = 5),
         strip.text = element_text(face = "bold", size = 9, margin = margin(b = 10)),
-        legend.position = "right", 
-        legend.title = element_text(size = 8, face = "bold"), 
+        legend.position = "right",
+        legend.title = element_text(size = 8, face = "bold"),
         legend.text = element_text(size = 7))
 
 # 5. Guardar el gráfico
-#ggsave("output/figures/mapa_05_multinorma_winter.png", plot = mapa_multinorma_invierno, width = 8, height = 6, dpi = 300)
+ggsave("output/figures/mapa_05_multinorma_winter_2.0.png", plot = mapa_multinorma_invierno, width = 8, height = 6, dpi = 300)
 
 rm(list = ls())

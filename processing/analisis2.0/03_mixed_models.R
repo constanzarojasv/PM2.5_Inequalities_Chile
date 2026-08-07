@@ -272,15 +272,58 @@ pacf(residuals(modelo_ar2, type = "normalized"))
 
 anova(modelo_ar1, modelo_ar2)
 
+# ------------------------------------------------------------------------------
+# Tirar medida de bondad del ajuste. Agregar justificacion de los grados de libertad.
+#
+# la tabla de efectos fijos trae una columna DF distinta POR TERMINO, chica
+# para los predictores de nivel-comuna y grande para los que varian dia a
+# dia (year_centrado, winter, winter:biomass_total). Se extrae y se muestra
+# explicitamente en vez de solo el p-value, para que la limitacion quede
+# transparente con numeros concretos.
+tabla_gl_ar2 <- as.data.frame(summary(modelo_ar2)$tTable) %>%
+  tibble::rownames_to_column("term") %>%
+  rename(estimate = Value, std_error = `Std.Error`, df = DF, t_value = `t-value`, p_value = `p-value`) %>%
+  mutate(
+    nivel = case_when(
+      term %in% c("(Intercept)", "poverty", "density_miles", "alt_100m", "biomass_total") ~ "Nivel comuna (constante en el tiempo)",
+      TRUE ~ "Nivel dia (varia dentro de la comuna)"
+    )
+  ) %>%
+  select(term, nivel, estimate, std_error, df, p_value)
+
+print(tabla_gl_ar2)
+
+# Medidas de bondad de ajuste (mismo paquete que ya usan para los modelos
+# lmer: performance::r2()/icc(), mas AIC/BIC/logLik que ya calcula nlme)
+print(AIC(modelo_ar2))
+print(BIC(modelo_ar2))
+print(logLik(modelo_ar2))
+print(performance::r2(modelo_ar2))
+print(performance::icc(modelo_ar2))
+
+# ------------------------------------------------------------------------------
+# Helper: extrae UN termino de la tabla de efectos fijos de un modelo lme,
+# con su DF -- se reusa para todas las comparaciones de sensibilidad de aqui
+# en adelante (Talagante, sin pobreza, sin biomasa) en vez de repetir el
+# mismo bloque de codigo 4 veces.
+# ------------------------------------------------------------------------------
+extraer_termino <- function(modelo, termino, nombre_modelo) {
+  as.data.frame(summary(modelo)$tTable) %>%
+    tibble::rownames_to_column("term") %>%
+    rename(estimate = Value, std_error = `Std.Error`, df = DF, p_value = `p-value`) %>%
+    filter(term == termino) %>%
+    mutate(modelo = nombre_modelo) %>%
+    select(modelo, term, estimate, std_error, df, p_value)
+}
+
 # ==============================================================================
-# MODELO 6: SENSIBILIDAD - EXCLUYENDO TALAGANTE (AR1)
+# MODELO 6: SENSIBILIDAD - EXCLUYENDO TALAGANTE (AR2)
 # ==============================================================================
-# El Revisor 2 senala que la interaccion invierno x biomasa esta impulsada
+# Interaccion invierno x biomasa esta impulsada
 # casi enteramente por Talagante (1.049 calefactores/10.000 hogares, dos
 # ordenes de magnitud por sobre la siguiente comuna mas alta, ~150 en Puente
-# Alto) y pide explicitamente un leave-one-out excluyendola. Se reajusta el
-# mismo Modelo 4 (mismos predictores, misma estructura AR1) sin Talagante,
-# para comparar el coeficiente/CI de la interaccion con y sin ese punto.
+# Alto). Se reajusta el modelo final (AR2, mismos predictores) sin Talagante.
+print("--- RUNNING MODEL 6: SENSITIVITY - EXCLUDING TALAGANTE (AR2) ---")
 
 datos_modelo_sin_talagante <- datos_modelo %>%
   filter(comuna != "Talagante") %>%
@@ -289,29 +332,142 @@ datos_modelo_sin_talagante <- datos_modelo %>%
 n_filas_talagante <- datos_modelo %>% filter(comuna == "Talagante") %>% nrow()
 print(paste("--- Excluding", n_filas_talagante, "daily records from Talagante ---"))
 
-modelo_ar1_sin_talagante <- lme(
+modelo_ar2_sin_talagante <- lme(
   mp25_prom_valid ~ year_centrado + winter * biomass_total + poverty + density_miles + alt_100m,
   random = ~ 1 | comuna,
-  correlation = corAR1(form = ~ fecha_local | comuna),
+  correlation = corARMA(form = ~ fecha_local | comuna, p = 2, q = 0),
   data = datos_modelo_sin_talagante
 )
 
-summary(modelo_ar1_sin_talagante)
+summary(modelo_ar2_sin_talagante)
 
-# Comparacion directa del coeficiente de la interaccion invierno x biomasa
-# con y sin Talagante (esto es lo que le importa al Revisor 2: ver si
-# sobrevive al sacar el outlier)
+# ==============================================================================
+# MODELO 7: SENSIBILIDAD - SIN POBREZA (AR2)
+# ==============================================================================
+# Si al sacar pobreza la interaccion invierno x biomasa no cambia mucho, refuerza que
+# biomasa (no pobreza) es el driver real.
+print("--- RUNNING MODEL 7: SENSITIVITY - WITHOUT POVERTY (AR2) ---")
+
+modelo_ar2_sin_pobreza <- lme(
+  mp25_prom_valid ~ year_centrado + winter * biomass_total + density_miles + alt_100m,
+  random = ~ 1 | comuna,
+  correlation = corARMA(form = ~ fecha_local | comuna, p = 2, q = 0),
+  data = datos_modelo
+)
+
+summary(modelo_ar2_sin_pobreza)
+
+# ==============================================================================
+# MODELO 8: SENSIBILIDAD - SIN BIOMASA (AR2)
+# ==============================================================================
+# Version complementaria: si al sacar biomasa (y su interaccion con invierno,
+# que no puede estimarse sin ella) la pobreza SI se vuelve significativa,
+# sugeriria que biomasa esta actuando como mediador/confundidor de pobreza.
+print("--- RUNNING MODEL 8: SENSITIVITY - WITHOUT BIOMASS (AR2) ---")
+
+modelo_ar2_sin_biomasa <- lme(
+  mp25_prom_valid ~ year_centrado + winter + poverty + density_miles + alt_100m,
+  random = ~ 1 | comuna,
+  correlation = corARMA(form = ~ fecha_local | comuna, p = 2, q = 0),
+  data = datos_modelo
+)
+
+summary(modelo_ar2_sin_biomasa)
+
+# ==============================================================================
+# TABLA COMPARATIVA DE SENSIBILIDAD (Talagante / sin pobreza / sin biomasa)
+# ==============================================================================
+# Junta, en una sola tabla, como se mueven los coeficientes clave (la
+# interaccion invierno x biomasa, y pobreza) entre el modelo completo y cada
+# variante de sensibilidad -- es la forma compacta de responder a la vez el
+# comentario de Talagante y el de "disentangle poverty and biomass".
 comparacion_interaccion <- bind_rows(
-  broom.mixed::tidy(modelo_ar1, effects = "fixed", conf.int = TRUE) %>%
-    filter(term == "winterWinter:biomass_total") %>%
-    mutate(modelo = "Con Talagante (Modelo 4)"),
-  broom.mixed::tidy(modelo_ar1_sin_talagante, effects = "fixed", conf.int = TRUE) %>%
-    filter(term == "winterWinter:biomass_total") %>%
-    mutate(modelo = "Sin Talagante (Modelo 5)")
+  extraer_termino(modelo_ar2, "winterWinter:biomass_total", "Completo (Modelo 5, AR2)"),
+  extraer_termino(modelo_ar2_sin_talagante, "winterWinter:biomass_total", "Sin Talagante (Modelo 6)"),
+  extraer_termino(modelo_ar2_sin_pobreza, "winterWinter:biomass_total", "Sin pobreza (Modelo 7)")
+)
+
+comparacion_pobreza <- bind_rows(
+  extraer_termino(modelo_ar2, "poverty", "Completo (Modelo 5, AR2)"),
+  extraer_termino(modelo_ar2_sin_biomasa, "poverty", "Sin biomasa (Modelo 8)")
+)
+
+tabla_sensibilidad <- bind_rows(
+  comparacion_interaccion %>% mutate(coeficiente = "Winter x Biomass interaction"),
+  comparacion_pobreza %>% mutate(coeficiente = "Poverty")
 ) %>%
-  select(modelo, estimate, conf.low, conf.high, p.value)
+  select(coeficiente, modelo, estimate, std_error, df, p_value)
 
-print(comparacion_interaccion)
+print(tabla_sensibilidad)
 
+writeLines(kable(tabla_sensibilidad, format = "markdown", digits = 4),
+           "output/tables/table_6_sensitivity_AR2_2.0.md")
 
-#FALTA HACER TODO CON AR(2)
+# ==============================================================================
+# TABLA FINAL FORMATEADA DEL MODELO AR(2) (para el paper, reemplaza el
+# Modelo 2/3 sin AR como Tabla 3 -- estos quedan como referencia de que
+# cambio al corregir la autocorrelacion)
+# ==============================================================================
+ci_ar2 <- as.data.frame(nlme::intervals(modelo_ar2, which = "fixed")$fixed) %>%
+  tibble::rownames_to_column("term")
+# NOTA: si `names(ci_ar2)` no trae columnas "lower"/"est."/"upper" exactas,
+# revisar con str(intervals(modelo_ar2, which="fixed")) y ajustar el
+# left_join/select de abajo a los nombres reales.
+
+fixed_effects_ar2 <- tabla_gl_ar2 %>%
+  left_join(ci_ar2, by = "term") %>%
+  mutate(
+    p_label = case_when(
+      p_value < 0.001 ~ "< 0.001*",
+      p_value < 0.05  ~ paste0(sprintf("%.3f", p_value), "*"),
+      TRUE            ~ sprintf("%.3f", p_value)
+    ),
+    ci_label = paste0("[", sprintf("%.2f", lower), " – ", sprintf("%.2f", upper), "]"),
+    estimate_label = case_when(
+      term == "biomass_total" ~ sprintf("%.4f", estimate),
+      term == "winterWinter:biomass_total" ~ sprintf("%.4f", estimate),
+      TRUE ~ sprintf("%.2f", estimate)
+    ),
+    term_clean = case_when(
+      term == "(Intercept)" ~ "(Intercept)",
+      term == "year_centrado" ~ "Year",
+      term == "poverty" ~ "Poverty (%)",
+      term == "density_miles" ~ "Density (1,000 inhabitants/km²)",
+      term == "alt_100m" ~ "Altitude (per 100m)",
+      term == "winterWinter" ~ "Season [Winter (GEC)]",
+      term == "biomass_total" ~ "Biomass heaters^a",
+      term == "winterWinter:biomass_total" ~ "Winter × Biomass",
+      TRUE ~ term
+    )
+  ) %>%
+  select(Predictors = term_clean, Estimate = estimate_label, `95% CI` = ci_label, DF = df, `p value` = p_label)
+
+r2_ar2 <- performance::r2(modelo_ar2)
+icc_ar2 <- performance::icc(modelo_ar2)
+
+extra_rows_ar2 <- tibble::tribble(
+  ~Predictors, ~Estimate, ~`95% CI`, ~DF, ~`p value`,
+  "**Model Fit**", "", "", NA, "",
+  "AIC / BIC", paste0(sprintf("%.1f", AIC(modelo_ar2)), " / ", sprintf("%.1f", BIC(modelo_ar2))), "", NA, "",
+  "ICC", sprintf("%.2f", icc_ar2$ICC_adjusted), "", NA, "",
+  "Observations", as.character(nobs(modelo_ar2)), "", NA, "",
+  "Marginal R² / Cond. R²", paste0(sprintf("%.3f", r2_ar2$R2_marginal), " / ", sprintf("%.3f", r2_ar2$R2_conditional)), "", NA, ""
+)
+
+tabla_final_ar2 <- bind_rows(
+  tibble(Predictors = "**Fixed Effects**", Estimate = "", `95% CI` = "", DF = NA, `p value` = ""),
+  fixed_effects_ar2,
+  extra_rows_ar2
+)
+
+nota_pie_ar2 <- "_Note: CI: Confidence Interval (95%). DF: denominator degrees of freedom per term (nlme::lme) -- note the much smaller DF for municipality-level, time-invariant predictors (poverty, density, altitude, biomass) compared to day-level predictors (year, winter, winter x biomass), reflecting that the former are effectively estimated from 10 municipalities, not 10,410 daily records. AR(2): autoregressive order-2 correlation structure on residuals within each municipality, selected over AR(1) via likelihood ratio test (see comparison above). Reference category for Season: [Rest of the year]. a: Biomass heaters rate per 10,000 households. * indicate statistical significance (p<0.05)._"
+
+sink("output/tables/table_5_mixed_model_AR2_2.0.md")
+cat("### Table 3. Results of the Linear Mixed Model (LMM, AR(2) residual correlation) evaluating the effect of seasonality, year, multidimensional poverty, population density, altitude, and residential biomass heating on daily PM2.5 concentrations.\n\n")
+print(kable(tabla_final_ar2, format = "markdown", align = "lcccc"))
+cat("\n\n", nota_pie_ar2, "\n")
+sink()
+
+print("Model saved and full table generated in 'output/tables/table_5_mixed_model_AR2_2.0.md'")
+
+rm(list = ls())
