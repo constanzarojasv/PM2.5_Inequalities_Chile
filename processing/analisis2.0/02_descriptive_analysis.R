@@ -8,9 +8,54 @@ source("processing/analisis2.0/00_setup_functions.R", encoding = "UTF-8")
 # 1. Load data
 df_analisis <- read_rds("input/data_processed/datos_analisis_final_2.0.rds")
 
+# Monthly completeness table (comuna, anio_n, mes, mes_valido, media_mensual,
+# imputado, ...) -- needed by calcular_p_sensibilidad() below to build the
+# non-parametric, pseudo-replication-safe year-comparison test.
+tabla_mensual <- read_csv("output/tables/table_S1_completeness.csv", show_col_types = FALSE)
+
+# Test de comparacion entre años, sin pseudo-replicacion: compara medias
+# MENSUALES pareadas/bloqueadas por mes calendario entre años, usando solo
+# meses genuinamente medidos (mes_valido == TRUE; los meses imputados bajo
+# el Decreto 12/2011 se excluyen). Se cambia ANOVA a test no paramétricos:
+#   - 2 años conformes  -> Wilcoxon signed-rank (pareado)
+#   - >=3 años conformes -> Friedman (bloqueado por mes)
+#   - <2 años conformes, o menos de `min_meses` meses comparables entre
+#     todos los años -> NA (se reporta como "Insufficient data")
+# `meses_incluir` = 1:12 para la tabla anual, 5:8 para la de invierno.
+calcular_p_sensibilidad <- function(comuna_objetivo, anios_comparar, meses_incluir, tabla_mensual, min_meses = 3) {
+  if (length(anios_comparar) < 2) return(NA_real_)
+
+  serie <- tabla_mensual %>%
+    filter(comuna == as.character(comuna_objetivo), anio_n %in% anios_comparar,
+           mes %in% meses_incluir, mes_valido) %>%
+    select(anio_n, mes, media_mensual)
+
+  if (length(anios_comparar) == 2) {
+    ancha <- serie %>%
+      pivot_wider(names_from = anio_n, values_from = media_mensual, names_prefix = "y") %>%
+      drop_na()
+    if (nrow(ancha) < min_meses) return(NA_real_)
+    nombres_y <- paste0("y", anios_comparar)
+    wilcox.test(ancha[[nombres_y[2]]], ancha[[nombres_y[1]]], paired = TRUE)$p.value
+  } else {
+    balanceada <- serie %>%
+      group_by(mes) %>%
+      filter(n() == length(anios_comparar)) %>%
+      ungroup()
+    if (n_distinct(balanceada$mes) < min_meses) return(NA_real_)
+    ancha <- balanceada %>%
+      mutate(anio_f = factor(anio_n)) %>%
+      select(mes, anio_f, media_mensual) %>%
+      pivot_wider(names_from = anio_f, values_from = media_mensual) %>%
+      select(-mes) %>%
+      as.matrix()
+    friedman.test(ancha)$p.value
+  }
+}
+
 # 2. Define summary function
 # `periodo` controls which completeness flag is used to gate the reported
-# mean/SD/etc. and which station-years enter the ANOVA:
+# mean/SD/etc. and which station-years enter the year-comparison test:
 #  - "anual": uses anio_conforme (Decreto 12/2011, >=11 valid months, or
 #    9-10 with imputation) and reports the regulatory annual value
 #    (mean of monthly means) instead of a naive pooled mean of all days.
@@ -85,23 +130,34 @@ calcular_tabla_resumen <- function(df, titulo_tabla, periodo = c("anual", "invie
       .groups = "drop"
     )
 
-  # C) ANOVA (Year comparison p-value), run ONLY on compliant station-years
-  # so an incomplete year (e.g. Cerrillos 2022, missing Jan-Mar) doesn't
-  # bias the between-year significance test (Reviewer 2).
+  # C) Year-comparison p-value, run ONLY on compliant station-years so an
+  # incomplete year (e.g. Cerrillos 2022, missing Jan-Apr) doesn't bias the
+  # between-year significance test (Reviewer 2). Uses monthly-means,
+  # paired/blocked non-parametric tests (Wilcoxon / Friedman) instead of a
+  # daily one-way ANOVA, to avoid pseudo-replication across ~350
+  # non-independent daily values per year (see calcular_p_sensibilidad()
+  # above and Revisor 2's autocorrelation comment).
+  meses_periodo <- if (periodo == "anual") 1:12 else 5:8
+
   p_valores <- df %>%
     filter(Conforme) %>%
+    mutate(anio_num = as.integer(as.character(anio))) %>%
     group_by(comuna) %>%
     summarise(
-      n_anios_conformes = n_distinct(anio),
-      p_val_num = if (n_anios_conformes >= 2) summary(aov(mp25_prom_valid ~ droplevels(anio)))[[1]][["Pr(>F)"]][1] else NA_real_,
+      n_anios_conformes = n_distinct(anio_num),
+      anios_comparar = list(sort(unique(anio_num))),
       .groups = "drop"
     ) %>%
     mutate(
+      p_val_num = purrr::map2_dbl(
+        comuna, anios_comparar,
+        ~ calcular_p_sensibilidad(.x, .y, meses_periodo, tabla_mensual)
+      ),
       p_value = case_when(
-        n_anios_conformes < 2 ~ "Insufficient data",
-        p_val_num < 0.001     ~ "< 0.001 *",
-        p_val_num < 0.05      ~ paste0(round(p_val_num, 3), " *"),
-        TRUE                  ~ as.character(round(p_val_num, 3))
+        n_anios_conformes < 2 | is.na(p_val_num) ~ "Insufficient data",
+        p_val_num < 0.001                        ~ "< 0.001 *",
+        p_val_num < 0.05                         ~ paste0(round(p_val_num, 3), " *"),
+        TRUE                                      ~ as.character(round(p_val_num, 3))
       )
     ) %>%
     select(comuna, p_value)

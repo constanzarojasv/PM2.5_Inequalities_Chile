@@ -265,6 +265,12 @@ modelo_ar2 <- lme(
 
 summary(modelo_ar2)
 
+class(datos_modelo$winter)
+class(datos_modelo$year_centrado)
+class(datos_modelo$alt_100m)
+
+anova(modelo_ar2)
+
 acf(residuals(modelo_ar2, type = "normalized"))
 qqnorm(residuals(modelo_ar2, type = "normalized")); qqline(residuals(modelo_ar2, type = "normalized"))
 hist(residuals(modelo_ar2, type = "normalized"), breaks = 30)
