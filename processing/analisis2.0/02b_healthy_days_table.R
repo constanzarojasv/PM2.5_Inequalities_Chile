@@ -47,9 +47,16 @@ tabla_anual_hw <- calcular_dias_saludables(df_analisis, "anio_conforme") %>%
 
 # 3. CÁLCULO PERIODO INVIERNO
 # Filtramos de forma robusta por si la variable dice "Invierno" o "Winter"
+# NO se usa la columna invierno_conforme cruda (exige los 4 meses completos)
+# -- se usa el mismo criterio relajado que ya aplican 02_descriptive_analysis.R
+# y 04_spatial_analysis_maps.R: con 3 o 4 de los 4 meses de invierno validos.
 tabla_invierno_hw <- df_analisis %>%
   filter(es_invierno %in% c("Invierno", "Winter")) %>%
-  calcular_dias_saludables("invierno_conforme") %>%
+  mutate(
+    meses_validos_invierno = 4L - lengths(strsplit(meses_invierno_no_validos, ",")),
+    conforme_invierno_relajado = meses_validos_invierno >= 3
+  ) %>%
+  calcular_dias_saludables("conforme_invierno_relajado") %>%
   rename(
     `Valid days_Winter` = valid_days,
     `Conforme_Winter` = Conforme,

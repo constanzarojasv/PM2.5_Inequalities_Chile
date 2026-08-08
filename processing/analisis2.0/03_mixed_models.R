@@ -451,11 +451,21 @@ fixed_effects_ar2 <- tabla_gl_ar2 %>%
 r2_ar2 <- performance::r2(modelo_ar2)
 icc_ar2 <- performance::icc(modelo_ar2)
 
+# Random effects (varianza), vía VarCorr() porque modelo_ar2 es un objeto
+# lme (nlme), no lmer -- tidy(effects="ran_pars") no aplica aquí igual que
+# en la tabla vieja.
+vc_ar2 <- nlme::VarCorr(modelo_ar2)
+var_comuna_ar2   <- as.numeric(vc_ar2["(Intercept)", "Variance"])
+var_residual_ar2 <- as.numeric(vc_ar2["Residual", "Variance"])
+
 extra_rows_ar2 <- tibble::tribble(
   ~Predictors, ~Estimate, ~`95% CI`, ~DF, ~`p value`,
+  "**Random Effects**", "", "", NA, "",
+  "σ² (Residual Variance)", sprintf("%.2f", var_residual_ar2), "", NA, "",
+  "τ₀₀ (Between-municipality)", sprintf("%.2f", var_comuna_ar2), "", NA, "",
+  "ICC", sprintf("%.2f", icc_ar2$ICC_adjusted), "", NA, "",
   "**Model Fit**", "", "", NA, "",
   "AIC / BIC", paste0(sprintf("%.1f", AIC(modelo_ar2)), " / ", sprintf("%.1f", BIC(modelo_ar2))), "", NA, "",
-  "ICC", sprintf("%.2f", icc_ar2$ICC_adjusted), "", NA, "",
   "Observations", as.character(nobs(modelo_ar2)), "", NA, "",
   "Marginal R² / Cond. R²", paste0(sprintf("%.3f", r2_ar2$R2_marginal), " / ", sprintf("%.3f", r2_ar2$R2_conditional)), "", NA, ""
 )

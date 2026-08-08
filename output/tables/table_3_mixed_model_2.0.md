@@ -1,9 +1,5 @@
-
-> cat("### Table 5. Results of the Linear Mixed Model (LMM) evaluating the effect of seasonality, year, multidimensional poverty, population density a ..." ... [TRUNCATED] 
 ### Table 5. Results of the Linear Mixed Model (LMM) evaluating the effect of seasonality, year, multidimensional poverty, population density and residential biomass heating on daily PM2.5 concentrations.
 
-
-> print(kable(tabla_final, format = "markdown", align = "lccc"))
 
 
 |Predictors                 |   Estimate    |     95% CI      | p value  |
@@ -25,9 +21,5 @@
 |Observations               |     9785      |                 |          |
 |Marginal R² / Cond. R²     | 0.413 / 0.431 |                 |          |
 
-> cat("\n\n", nota_pie, "\n")
-
 
  _Note: CI: Confidence Interval (95%). ICC: Intraclass Correlation Coefficient. Reference category for Season: [Rest of the year]. a: Biomass heaters rate per 10,000 households. * indicate statistical significance (p<0.05)._ 
-
-> sink()

@@ -13,9 +13,12 @@
 |Density (1,000 inhabitants/km²) |       -0.00       |    [-0.38 – 0.37]     |  5   |  0.987   |
 |Altitude (per 100m)             |       -1.33       |    [-4.37 – 1.72]     |  5   |  0.313   |
 |Winter × Biomass                |      0.0029       |    [-0.00 – 0.01]     | 9772 |  0.087   |
+|**Random Effects**              |                   |                       |  NA  |          |
+|σ² (Residual Variance)          |      164.21       |                       |  NA  |          |
+|τ₀₀ (Between-municipality)      |       4.47        |                       |  NA  |          |
+|ICC                             |       0.03        |                       |  NA  |          |
 |**Model Fit**                   |                   |                       |  NA  |          |
 |AIC / BIC                       | 71471.2 / 71557.5 |                       |  NA  |          |
-|ICC                             |       0.03        |                       |  NA  |          |
 |Observations                    |       9785        |                       |  NA  |          |
 |Marginal R² / Cond. R²          |   0.368 / 0.385   |                       |  NA  |          |
 
