@@ -47,3 +47,9 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# OS files
+.DS_Store
+
+# Excel/Word lock files
+~$*
